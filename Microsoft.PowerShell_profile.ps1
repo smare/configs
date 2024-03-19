@@ -105,7 +105,7 @@ Set-Alias -Name gpa -Value Get-ProfileAliases
 
 #------------------------------------------------------------------------------
 
-# Looks for the environment variable $env:RIPGREP_CONFIG_PATH to determine the 
+# Looks for the environment variable $env:RIPGREP_CONFIG_PATH to determine the
 # location of the ripgrep configuration file. If it does not exist, it will use
 # any parameters passed as parameters.
 function Invoke-RipGrep {
