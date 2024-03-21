@@ -27,9 +27,14 @@ Set-PSReadLineOption -BellStyle None # Remove the annoying bell sound  # not sur
 
 #------------------------------------------------------------------------------
 
+# Source this profile
+function Set-ProfileSource { . $PSHOME\Microsoft.PowerShell_profile.ps1 }
+Set-Alias source Set-ProfileSource
+
+#------------------------------------------------------------------------------
+
 function Get-PSVersion { $PSVersionTable.PSVersion }
 Set-Alias psver Get-PSVersion
-
 
 #------------------------------------------------------------------------------
 

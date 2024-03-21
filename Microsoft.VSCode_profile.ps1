@@ -1,3 +1,5 @@
+# Uncomment the following line to force PowerShell Extension to use PowerShell Core profile.
+# if ($env:TERM_PROGRAM -eq "vscode") { . "$(code --locate-shell-integration-path pwsh)" }
 
 #34de4b3d-13a8-4540-b76d-b9e8d3851756 PowerToys CommandNotFound module
 
@@ -30,6 +32,10 @@ Set-PSReadLineOption -BellStyle None # Remove the annoying bell sound  # not sur
 function Get-PSVersion { $PSVersionTable.PSVersion }
 Set-Alias psver Get-PSVersion
 
+#------------------------------------------------------------------------------
+
+function Set-ProfileSource { . $HOME\OneDrive\Documents\PowerShell\Microsoft.VSCode_profile.ps1 }
+Set-Alias source Set-ProfileSource
 
 #------------------------------------------------------------------------------
 
