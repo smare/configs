@@ -1,5 +1,7 @@
+[safe]
+	directory = C:/dev/projects/scripts
+	directory = C:/dev/projects/configs
 [user]
-	name = Sean Mare
 	email = sean.mare@gmail.com
 [init]
 	defaultBranch = dev
@@ -23,15 +25,6 @@
     changed = green
     untracked = bold red    
 [alias]
-	lg = log --oneline --decorate --graph --all
 	s = status -s
-	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-    brd = "! f() { for k in $(git branch $@ | sed 's/^..//; s/ .*//'); do echo "$(git log -1 --pretty='%Cgreen%ci%Creset %C(yellow)%cr%Creset %C(bold white) %Creset '  ) $k " ; done | sort -r; }; f"
-    bra = branch -a
 [status]
 	showuntrackedfiles = all
-[core]
-	autocrlf = true
-	safecrlf = false
-	editor = 'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
-

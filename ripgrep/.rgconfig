@@ -1,0 +1,46 @@
+# Add RIPGREP_CONFIG_PATH environment variable and
+# point it to the full path of this file
+# Ex:
+#	[System.Environment]::SetEnvironmentVariable("RIPGREP_CONFIG_PATH", "C:\Users\seanm\.rgconfig", "Machine")
+#
+# These are good resources for ripgrep options
+# https://mariusschulz.com/blog/fast-searching-with-ripgrep
+# https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md
+# https://blog.burntsushi.net/ripgrep/
+
+# Search hidden files / directories (e.g. dotfiles) by default
+--hidden
+
+# Because who cares about case!?
+# Similar to --ignore-case, but disables itself if the pattern 
+# contains any uppercase letters.
+--smart-case
+
+# Who doesn't want to be pretty?
+--pretty
+
+# This may negatively affect performance but it is too
+# useful to exclude.
+--search-zip
+
+# Report a count of total matched lines.
+--count
+
+# Follow symbolic links while recursively searching.
+--follow
+
+# When piping rg, add this parameter to ensure line numbers
+# are printed in the output
+# -n
+# Example of piping:
+#	git show | rg -n '^[-+]' | rg -v -n '^[-+]{3}' | sort | wsl uniq
+
+# To control the number of lines before and after the matching line 
+# independently, use the --before-context and --after-context options, 
+# respectively, or -B and -A for short.
+# Make sure this is valid, it was wrong when I tested
+# -B 2 
+# -A 2
+
+# Use PCRE2 only if needed
+--auto-hybrid-regex
