@@ -1,7 +1,12 @@
 # configs
 A collection of configuration files with defined aliases, color schemes, etc. for several applications.
 
-Make the following hardlinks to Windows user's config files.
+Make the following hardlinks for Windows user's config files.
+
+### vim
+```powershell
+New-Item -ItemType Hardlink -Path "C:\Program Files\Vim\_vimrc" -Target C:\dev\projects\configs\vim\.vimrc
+```
 
 ### git
 ```powershell

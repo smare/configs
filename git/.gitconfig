@@ -16,7 +16,7 @@
     interactive = always
     grep = always
     decorate = always
-    showbranch = always    
+    showbranch = always
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -24,8 +24,9 @@
 [color "status"]
     added = yellow
     changed = green
-    untracked = bold red    
+    untracked = bold red
 [alias]
 	s = status -s
+    lg = log -n 20 --graph --abbrev-commit
 [status]
 	showuntrackedfiles = all
