@@ -234,9 +234,6 @@ function Get-GitClone {
 # Correctly setting the alias for Get-GitClone
 Set-Alias gcl Get-GitClone
 
-# Create an alias for Vim
-Set-Alias vi vim
-
 #------------------------------------------------------------------------------
 
 # ALIASES

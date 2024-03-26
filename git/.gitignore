@@ -1,0 +1,10 @@
+.vscode/
+.DS_Store
+*.log
+# C extensions
+*.so
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+# Scrapy stuff:
+.scrapy
