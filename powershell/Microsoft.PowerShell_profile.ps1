@@ -28,7 +28,10 @@ Set-PSReadLineOption -BellStyle None # Remove the annoying bell sound  # not sur
 #------------------------------------------------------------------------------
 
 # Source this profile
-function Set-ProfileSource { . $PSHOME\Microsoft.PowerShell_profile.ps1 }
+function Set-ProfileSource {
+    . $PSHOME\Microsoft.PowerShell_profile.ps1
+#    & $profile
+}
 Set-Alias source Set-ProfileSource
 
 #------------------------------------------------------------------------------
@@ -183,6 +186,14 @@ function Get-External-IP-Address {
 # ALIAS: extip
 # FUNCTION: Get-External-IP-Address
 Set-Alias extip Get-External-IP-Address
+
+#------------------------------------------------------------------------------
+
+function Get-Wttr {
+    (Invoke-WebRequest wttr.in).Content
+}
+
+Set-Alias -Name wttr -Value Get-Wttr -Description "Displays the local weather from wttr.in"
 
 #------------------------------------------------------------------------------
 
