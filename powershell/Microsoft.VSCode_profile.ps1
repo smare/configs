@@ -4,7 +4,9 @@
 #34de4b3d-13a8-4540-b76d-b9e8d3851756 PowerToys CommandNotFound module
 
 Import-Module "C:\Program Files\PowerToys\WinUI3Apps\..\WinGetCommandNotFound.psd1"
-Import-Module AWSPowerShell.NetCore
+
+# Importing large modules in this profile crashes the extension
+# Import-Module AWSPowerShell.NetCore
 
 #34de4b3d-13a8-4540-b76d-b9e8d3851756
 
@@ -34,13 +36,13 @@ Set-Alias psver Get-PSVersion
 
 #------------------------------------------------------------------------------
 
-function Set-ProfileSource { . $HOME\OneDrive\Documents\PowerShell\Microsoft.VSCode_profile.ps1 }
-Set-Alias source Set-ProfileSource
+function Get-PSVersion { $PSVersionTable.PSVersion }
+Set-Alias -Name psver Get-PSVersion
 
 #------------------------------------------------------------------------------
 
 function Get-PSProfiles { $PROFILE | Select-Object * }
-Set-Alias psprof Get-PSProfiles
+Set-Alias -Name psprof Get-PSProfiles
 
 #------------------------------------------------------------------------------
 
@@ -93,12 +95,12 @@ function Get-ProfileAliases {
         $PROFILE.CurrentUserCurrentHost
     )
 
-    foreach ($profile in $profiles) {
-        if (Test-Path $profile) {
-            Write-Output "Searching in profile: $profile"
-            Select-String -Path $profile -Pattern 'Set-Alias|New-Alias' | ForEach-Object {
+    foreach ($profile_filename in $profiles) {
+        if (Test-Path $profile_filename) {
+            Write-Output "Searching in profile: $profile_filename"
+            Select-String -Path $profile_filename -Pattern 'Set-Alias|New-Alias' | ForEach-Object {
                 [PSCustomObject]@{
-                    Profile = $profile
+                    Profile = $profile_filename
                     LineNumber = $_.LineNumber
                     Text = $_.Line
                 }
@@ -118,9 +120,9 @@ function Invoke-RipGrep {
     & C:\dev\tools\ripgrep-14.1.0\rg.exe $args
 }
 
-# ALIAS: igl
+# ALIAS: irg
 # FUNCTION: Invoke-RipGrep (rg)
-Set-Alias irg Invoke-RipGrep
+Set-Alias -Name irg Invoke-RipGrep
 
 #------------------------------------------------------------------------------
 
@@ -145,7 +147,7 @@ function Invoke-NotepadPlusPlus {
 
 # ALIAS: npp
 # FUNCTION: Invoke-NotepadPlusPlus
-Set-Alias npp Invoke-NotepadPlusPlus
+Set-Alias -Name npp Invoke-NotepadPlusPlus
 
 #------------------------------------------------------------------------------
 
@@ -156,7 +158,7 @@ function Find-Whence {
 
 # ALIAS: whence
 # FUNCTION: Find-Whence
-Set-Alias whence Find-Whence
+Set-Alias -Name whence Find-Whence
 
 #------------------------------------------------------------------------------
 
@@ -172,18 +174,18 @@ function Get-ExeFilesWith64 {
 
 # ALIAS: dir-sysint
 # FUNCTION: Get-ExeFilesWith64
-Set-Alias dir-sysint Get-ExeFilesWith64
+Set-Alias -Name dir-sysint Get-ExeFilesWith64
 
 #------------------------------------------------------------------------------
 
 # Queries ifconfig.me/ip for external IP address
-function Get-External-IP-Address {
+function Get-ExternalIPAddress {
 	(Invoke-WebRequest -UseBasicParsing https://ifconfig.me/ip).Content.Trim()
 }
 
 # ALIAS: extip
-# FUNCTION: Get-External-IP-Address
-Set-Alias extip Get-External-IP-Address
+# FUNCTION: Get-ExternalIPAddress
+Set-Alias -Name extip Get-ExternalIPAddress
 
 #------------------------------------------------------------------------------
 
@@ -194,33 +196,33 @@ function Set-DownloadsDirectory {
 
 # ALIAS: dld
 # FUNCTION: Set-DownloadsDirectory
-Set-Alias dld Set-DownloadsDirectory
+Set-Alias -Name dld Set-DownloadsDirectory
 
 #------------------------------------------------------------------------------
 
 # Pushes to Git
-function Get-GitPush {
+function Invoke-GitPush {
     & git push $args
 }
 
-# ALIAS: gpush
+# ALIAS: igps
 # FUNCTION: pushes to remote git repository
-Set-Alias gpush Get-GitPush
+Set-Alias -Name igps Invoke-GitPush
 
 #------------------------------------------------------------------------------
 
 # Pulls from Git
-function Get-GitPull {
+function Invoke-GitPull {
     & git pull $args
 }
 
-# ALIAS: gpull
-# FUNCTION: Get-GitPull
-Set-Alias gpull Get-GitPull
+# ALIAS: igp
+# FUNCTION: Invoke-GitPull
+Set-Alias -Name igpl Invoke-GitPull
 
 #------------------------------------------------------------------------------
 
-function Get-GitClone {
+function Invoke-GitClone {
     $currentDir = Get-Location
     $targetDir = 'C:\dev\projects'
 
@@ -232,8 +234,8 @@ function Get-GitClone {
     & git clone $args[0] $cloneDir
 }
 
-# Correctly setting the alias for Get-GitClone
-Set-Alias gcl Get-GitClone
+# Correctly setting the alias for Invoke-GitClone
+Set-Alias -Name igc Invoke-GitClone
 
 #------------------------------------------------------------------------------
 

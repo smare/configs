@@ -5,7 +5,7 @@ Make the following hardlinks for Windows user's config files.
 
 ### vim
 ```powershell
-New-Item -ItemType Hardlink -Path "C:\Program Files\Vim\_vimrc" -Target C:\dev\projects\configs\vim\_vimrc
+New-Item -ItemType Hardlink -Path "$ENV:ProgramFiles\Vim\_vimrc" -Target C:\dev\projects\configs\vim\_vimrc
 ```
 
 ### git
@@ -20,7 +20,7 @@ New-Item -ItemType Hardlink -Path "$HOME\.rgconfig" -Target C:\dev\projects\conf
 
 ### PowerShell
 ```powershell
-New-Item -ItemType Hardlink -Path "C:\Program Files\PowerShell\7\Microsoft.PowerShell_profile.ps1" -Target C:\dev\projects\configs\powershell\Microsoft.PowerShell_profile.ps1
+New-Item -ItemType Hardlink -Path "$ENV:ProgramFiles\PowerShell\7\Microsoft.PowerShell_profile.ps1" -Target C:\dev\projects\configs\powershell\Microsoft.PowerShell_profile.ps1
 
 New-Item -ItemType Hardlink -Path "$HOME\OneDrive\Documents\PowerShell\Microsoft.VSCode_profile.ps1" -Target C:\dev\projects\configs\powershell\Microsoft.VSCode_profile.ps1
 ```
