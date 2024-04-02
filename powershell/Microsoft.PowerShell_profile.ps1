@@ -38,6 +38,22 @@ Set-Alias -Name source Set-ProfileSource
 
 #------------------------------------------------------------------------------
 
+function Invoke-Eza-ltr {
+    & eza -l -sold --icons=always --time-style=long-iso --color=always $args
+}
+
+Set-Alias -Name ltr -Value Invoke-Eza-ltr -Description "Invokes eza with -l (long) and -sold (sort by oldest) arguments (equivalent to ls -ltr)."
+
+#------------------------------------------------------------------------------
+
+function Invoke-Eza {
+    & eza --icons=always --time-style=long-iso --color=always $args
+}
+
+Set-Alias -Name ls -Value Invoke-Eza -Description "Invokes eza."
+
+#------------------------------------------------------------------------------
+
 function Get-PSVersion { $PSVersionTable.PSVersion }
 Set-Alias -Name psver Get-PSVersion
 
