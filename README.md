@@ -6,9 +6,19 @@ Make the following hardlinks for Windows user's config files.
 ### bash
 Ensure `.profile` and `.bash_profile` exist in `$HOME`.  Take care to update an existing `.bashrc` if
 there is one.
+
+No `.bashrc` (ex. Git for Windows):
 ```powershell
 New-Item -ItemType Hardlink -Path "$HOME\.bashrc" -Target C:\dev\projects\configs\bash\.bashrc
 New-Item -ItemType Hardlink -Path "$HOME\.bash_aliases" -Target C:\dev\projects\configs\bash\.bash_aliases
+```
+Existing `.bashrc` without reference to `.bash_aliases` (WSL):
+```sh
+cat C:/dev/projects/configs/bash/.bashrc >> ./~bashrc
+```
+PowerShell:
+```powershell
+cat C:\dev\projects\configs\bash\.bashrc >> $HOME\.bashrc
 ```
 
 ### cmd
