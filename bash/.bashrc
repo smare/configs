@@ -1,1 +1,3 @@
-alias ls='eza --icons=always --time-style=long-iso --color=always'
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi

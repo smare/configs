@@ -8,6 +8,7 @@ Ensure `.profile` and `.bash_profile` exist in `$HOME`.  Take care to update an 
 there is one.
 ```powershell
 New-Item -ItemType Hardlink -Path "$HOME\.bashrc" -Target C:\dev\projects\configs\bash\.bashrc
+New-Item -ItemType Hardlink -Path "$HOME\.bash_aliases" -Target C:\dev\projects\configs\bash\.bash_aliases
 ```
 
 ### cmd
