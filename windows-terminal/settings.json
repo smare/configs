@@ -65,7 +65,7 @@
                 "compatibility.reloadEnvironmentVariables": true,
                 "font":
                 {
-                    "face": "Cascadia Code",
+                    "face": "CaskaydiaCove Nerd Font",
                     "size": 11.0
                 },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -75,12 +75,12 @@
             },
             {
                 "adjustIndistinguishableColors": "always",
-                "colorScheme": "Monokai Vivid",
+                "colorScheme": "iTerm2 Default",
                 "commandline": "C:\\Windows\\System32\\cmd.exe",
                 "compatibility.reloadEnvironmentVariables": true,
                 "font":
                 {
-                    "face": "Cascadia Code",
+                    "face": "CaskaydiaCove Nerd Font",
                     "size": 11.0
                 },
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
@@ -89,11 +89,11 @@
             },
             {
                 "adjustIndistinguishableColors": "always",
-                "colorScheme": "iTerm2 Default",
+                "colorScheme": "Monokai Vivid",
                 "compatibility.reloadEnvironmentVariables": true,
                 "font":
                 {
-                    "face": "Cascadia Code",
+                    "face": "CaskaydiaCove Nerd Font",
                     "size": 11.0
                 },
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
