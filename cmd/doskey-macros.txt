@@ -1,0 +1,1 @@
+ls=C:\Users\seanm\AppData\Local\Microsoft\WinGet\Links\eza.exe --icons=always --time-style=long-iso --color=always $1

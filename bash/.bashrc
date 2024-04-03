@@ -1,0 +1,1 @@
+alias ls='eza --icons=always --time-style=long-iso --color=always'

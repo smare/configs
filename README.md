@@ -3,6 +3,22 @@ A collection of configuration files with defined aliases, color schemes, etc. fo
 
 Make the following hardlinks for Windows user's config files.
 
+### bash
+Ensure `.profile` and `.bash_profile` exist in `$HOME`.  Take care to update an existing `.bashrc` if
+there is one.
+```powershell
+New-Item -ItemType Hardlink -Path "$HOME\.bashrc" -Target C:\dev\projects\configs\bash\.bashrc
+```
+
+### cmd
+```powershell
+New-Item -ItemType Hardlink -Path "$HOME\doskey-macros.txt" -Target C:\dev\projects\configs\cmd\doskey-macros.txt
+```
+Then run the following command from a command prompt (not PowerShell):
+```powershell
+reg add "HKCU\Software\Microsoft\Command Processor" /v Autorun /d "doskey /macrofile=\"%HOME%\doskey-macros.txt\"" /f
+```
+
 ### vim
 ```powershell
 New-Item -ItemType Hardlink -Path "$ENV:ProgramFiles\Vim\_vimrc" -Target C:\dev\projects\configs\vim\_vimrc
