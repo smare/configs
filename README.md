@@ -3,6 +3,11 @@ A collection of configuration files with defined aliases, color schemes, etc. fo
 
 Make the following hardlinks for Windows user's config files.
 
+### bat
+```powershell
+New-Item -ItemType Hardlink -Path "$ENV:APPDATA\bat\.config" -Target C:\dev\projects\configs\bat\.config
+```
+
 ### bash
 Ensure `.profile` and `.bash_profile` exist in `$HOME`.  Take care to update an existing `.bashrc` if
 there is one.

@@ -12,7 +12,7 @@
 --hidden
 
 # Because who cares about case!?
-# Similar to --ignore-case, but disables itself if the pattern 
+# Similar to --ignore-case, but disables itself if the pattern
 # contains any uppercase letters.
 --smart-case
 
@@ -24,23 +24,36 @@
 --search-zip
 
 # Report a count of total matched lines.
---count
+# --count
 
 # Follow symbolic links while recursively searching.
 --follow
 
 # When piping rg, add this parameter to ensure line numbers
 # are printed in the output
-# -n
+-n
 # Example of piping:
 #	git show | rg -n '^[-+]' | rg -v -n '^[-+]{3}' | sort | wsl uniq
 
-# To control the number of lines before and after the matching line 
-# independently, use the --before-context and --after-context options, 
-# respectively, or -B and -A for short.
+# To control the number of lines before and after the matching line
+# independently, use the --before-context and --after-context options,
+# respectively, or -B and -A for short. -C combines -A and -B.
 # Make sure this is valid, it was wrong when I tested
-# -B 2 
-# -A 2
+--context=1
 
 # Use PCRE2 only if needed
 --auto-hybrid-regex
+
+--color=always
+# colors: black, blue, green, red, cyan, magenta, yellow, white
+# style: nobold, bold, nointense, intense, nounderline, underline
+--colors=match:fg:0xFF,0,0
+--colors=match:style:bold
+--colors=line:fg:0x3C,0xFF,0
+--colors=path:fg:0xFF,0xF7,0
+--colors=path:style:underline
+--context-separator=----------------------------------------
+--heading
+--hyperlink-format=file:/{path}
+--field-context-separator=:\x20
+--field-match-separator=:\x20

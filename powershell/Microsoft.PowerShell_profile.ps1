@@ -20,6 +20,8 @@ Import-Module "C:\Program Files\PowerToys\WinUI3Apps\..\WinGetCommandNotFound.ps
 Set-Location -Path C:\dev\projects
 Set-PSReadLineOption -BellStyle None # Remove the annoying bell sound  # not sure it actually works
 
+# ripgrep autocompletion
+. "C:\dev\tools\ripgrep-14.1.0\complete\_rg.ps1"
 
 # Set UTF-8 encoding
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -138,9 +140,9 @@ function Invoke-RipGrep {
     & C:\dev\tools\ripgrep-14.1.0\rg.exe $args
 }
 
-# ALIAS: irg
+# ALIAS: rg
 # FUNCTION: Invoke-RipGrep (rg)
-Set-Alias -Name irg Invoke-RipGrep
+Set-Alias -Name rg Invoke-RipGrep
 
 #------------------------------------------------------------------------------
 
@@ -198,6 +200,26 @@ Set-Alias -Name glw -Value Get-LocalWeather -Description "Displays the local wea
 
 #------------------------------------------------------------------------------
 
+# Change to dev\tools directory
+function Set-DevToolsDirectory {
+    Set-Location -Path C:\dev\tools
+}
+
+# ALIAS: toolsd
+# FUNCTION: Set-DevToolsDirectory
+Set-Alias -Name toolsd Set-DevToolsDirectory
+
+#------------------------------------------------------------------------------
+# Change to dev\projects directory
+function Set-DevProjectsDirectory {
+    Set-Location -Path C:\dev\projects
+}
+
+# ALIAS: projd
+# FUNCTION: Set-DevProjectsDirectory
+Set-Alias -Name projd Set-DevProjectsDirectory
+
+#------------------------------------------------------------------------------
 # Change to downloads directory
 function Set-DownloadsDirectory {
     Set-Location -Path $env:USERPROFILE\Downloads
