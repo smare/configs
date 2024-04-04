@@ -168,7 +168,6 @@ function Invoke-NotepadPlusPlus {
 Set-Alias -Name npp Invoke-NotepadPlusPlus
 
 #------------------------------------------------------------------------------
-
 # Searches  $env:path for any file (incl. .lnk)
 function Find-Whence {
     @(where.exe $args 2>$null)[0]
@@ -177,22 +176,6 @@ function Find-Whence {
 # ALIAS: whence
 # FUNCTION: Find-Whence
 Set-Alias -Name whence Find-Whence
-
-#------------------------------------------------------------------------------
-
-# Lists all the executables in the SysInternals directory
-function Get-ExeFilesWith64 {
-    param(
-        [string]$Path = 'C:\dev\tools\SysInternals'
-    )
-    Get-ChildItem -Path $Path -Filter *64*.exe -Recurse |
-    Where-Object { $_.Name -like '*64*.exe' } |
-    ForEach-Object { $_.BaseName } | more
-}
-
-# ALIAS: dir-sysint
-# FUNCTION: Get-ExeFilesWith64
-Set-Alias -Name dir-sysint Get-ExeFilesWith64
 
 #------------------------------------------------------------------------------
 

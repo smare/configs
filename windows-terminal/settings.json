@@ -61,7 +61,7 @@
             {
                 "adjustIndistinguishableColors": "always",
                 "closeOnExit": "graceful",
-                "colorScheme": "Pandora",
+                "colorScheme": "Dracula PRO - Blade",
                 "compatibility.reloadEnvironmentVariables": true,
                 "font":
                 {
@@ -142,7 +142,7 @@
             },
             {
                 "adjustIndistinguishableColors": "always",
-                "colorScheme": "Solarized Dark",
+                "colorScheme": "MaterialDesignColors",
                 "font":
                 {
                     "size": 11.0
@@ -154,7 +154,7 @@
             },
             {
                 "adjustIndistinguishableColors": "always",
-                "colorScheme": "Dracula PRO - Blade",
+                "colorScheme": "Grey-green",
                 "font":
                 {
                     "face": "Cascadia Code",
@@ -181,7 +181,7 @@
             },
             {
                 "adjustIndistinguishableColors": "always",
-                "colorScheme": "GruvboxDarkHard",
+                "colorScheme": "DjangoRebornAgain",
                 "commandline": "C:\\dev\\tools\\Python312\\Scripts\\aws-shell.exe",
                 "compatibility.reloadEnvironmentVariables": true,
                 "font":
