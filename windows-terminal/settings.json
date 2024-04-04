@@ -61,7 +61,7 @@
             {
                 "adjustIndistinguishableColors": "always",
                 "closeOnExit": "graceful",
-                "colorScheme": "Dracula PRO - Blade",
+                "colorScheme": "Pandora",
                 "compatibility.reloadEnvironmentVariables": true,
                 "font":
                 {
