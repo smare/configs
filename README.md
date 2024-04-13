@@ -3,6 +3,12 @@ A collection of configuration files with defined aliases, color schemes, etc. fo
 
 Make the following hardlinks for Windows user's config files.
 
+### Arduino IDE
+```powershell
+mv $ENV:LOCALAPPDATA\Arduino15\arduino-cli.yaml $ENV:LOCALAPPDATA\Arduino15\arduino-cli.yaml.bak
+New-Item -ItemType Hardlink -Path "$ENV:LOCALAPPDATA\Arduino15\arduino-cli.yaml" -Target C:\dev\projects\configs\ArduinoIDE\2.x\arduino-cli.yaml
+```
+
 ### bat
 ```powershell
 New-Item -ItemType Hardlink -Path "$ENV:APPDATA\bat\.config" -Target C:\dev\projects\configs\bat\.config

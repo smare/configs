@@ -1,0 +1,48 @@
+board_manager:
+  additional_urls:
+  - https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+  - https://sandeepmistry.github.io/arduino-nRF5/package_nRF5_boards_index.json
+  - https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boards/package_ControllinoHardware_index.json
+#  - http://digistump.com/package_digistump_index.json
+  - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+  - http://arduino.esp8266.com/stable/package_esp8266com_index.json
+  - https://www.visuino.com/installs/platforms/package_atsamd21e18a-release-build_index.json
+  - https://www.visuino.com/installs/platforms/package_mtk_linkitone_index.json
+  - https://raw.githubusercontent.com/chipKIT32/chipKIT-core/master/package_chipkit_index.json
+  - https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+  - https://www.visuino.com/installs/platforms/package_RaspberryPi_index.json
+  - http://dl.sipeed.com/MAIX/Maixduino/package_Maixduino_k210_index.json
+  - https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json
+  - https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+  - https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
+  - https://macchina.cc/package_macchina_index.json
+  - https://www.visuino.com/installs/platforms/package_digistump_index.json
+  - https://raw.githubusercontent.com/feilipu/feilipu.github.io/master/package_goldilocks_index.json
+  - https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json
+  - https://raw.githubusercontent.com/sparkfun/Arduino_Boards/main/IDE_Board_Manager/package_sparkfun_index.json
+  - https://static-cdn.m5stack.com/resource/arduino/package_m5stack_index.json
+
+build_cache:
+  compilations_before_purge: 10
+  ttl: 720h0m0s
+daemon:
+  port: "50051"
+directories:
+  data: C:\Users\seanm\AppData\Local\Arduino15
+  downloads: C:\Users\seanm\AppData\Local\Arduino15\staging
+  user: C:\Users\seanm\OneDrive\Documents\Arduino
+library:
+  enable_unsafe_install: false
+logging:
+  file: ""
+  format: text
+  level: info
+metrics:
+  addr: :9090
+  enabled: true
+output:
+  no_color: false
+sketch:
+  always_export_binaries: false
+updater:
+  enable_notification: true

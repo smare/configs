@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>Unofficial list of 3rd party boards support urls</title><title>Unofficial list of 3rd party boards support urls :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="sepia" data-font="sans-serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls">
+    <span>github.com</span>
+    <span>/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Unofficial list of 3rd party boards support urls</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">29-37 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="wiki-body" data-view-component="true">
+              <div>
+                <p>Have you added <a href="https://www.arduino.cc/en/guide/cores" rel="nofollow">Boards Manager</a> installation support for an Arduino compatible board? Please let everyone know by publishing your <a href="https://arduino.github.io/arduino-cli/latest/package_index_json-specification/" rel="nofollow">package index</a> URL.</p>
+
+<p></p><h3>List of 3rd party Boards Manager URLs</h3><a id="user-content-list-of-3rd-party-boards-manager-urls" aria-label="Permalink: List of 3rd party Boards Manager URLs" href="#list-of-3rd-party-boards-manager-urls"></a><p></p>
+<ul>
+<li>
+<p><strong>Adlink</strong>: <a href="https://raw.githubusercontent.com/ADLINK/OT2IT/main/packages_adlink_ot2it.json" rel="nofollow">https://raw.githubusercontent.com/ADLINK/OT2IT/main/packages_adlink_ot2it.json</a></p>
+<ul>
+<li>
+<a href="https://www.ipi.wiki/products/i-pi-ot2it" rel="nofollow">Adlink OT2IT Board</a>, is a high-performance microcontroller that has a 32-bit ARM® Cortex®-M4 processor running at 120 MHz, 256 KB of SRAM and up to 1 MB Dual Panel Flash with ECC. A 10/100 Ethernet MAC and 2 CAN-FD ports provide connectivity for industrial automation, automotive, and general-purpose applications.</li>
+</ul>
+</li>
+<li>
+<p><strong>Adafruit</strong>: <a href="https://adafruit.github.io/arduino-board-index/package_adafruit_index.json" rel="nofollow">https://adafruit.github.io/arduino-board-index/package_adafruit_index.json</a></p>
+<ul>
+<li>Adafruit AVR Boards (Flora, Metro, Trinket, Pro Trinket, &amp; Gemma)</li>
+<li>Adafruit SAMD Boards (Feather M0)</li>
+<li>
+<a href="https://github.com/adafruit/TeeOnArdu">TeeOnArdu</a> USB MIDI support for Leonardo &amp; Micro</li>
+<li>arcore USB MIDI support for Leonardo &amp; Micro</li>
+</ul>
+</li>
+<li>
+<p><strong>Adelino</strong>: <a href="http://adelino.cc/package_adelino_index.json" rel="nofollow">http://adelino.cc/package_adelino_index.json</a></p>
+<ul>
+<li>
+<a href="http://adelino.cc/" rel="nofollow">Adelino</a> is a <em>dual-microcontroller</em> development board based on ATmega32U4 and ESP8266 (using ESP-12F WiFi module), inspired by Arduino Leonardo and Arduino Yún</li>
+</ul>
+</li>
+<li>
+<p><strong>AirMCU</strong> <a href="https://github.com/Air-duino/Arduino-pack-json-ci/releases/download/Nightly/package_air_index.json">https://github.com/Air-duino/Arduino-pack-json-ci/releases/download/Nightly/package_air_index.json</a> or <a href="https://arduino.luatos.com/package_air_cn_index.json" rel="nofollow">https://arduino.luatos.com/package_air_cn_index.json</a> (Users in China can use this link to avoid failing to install due to network factors)</p>
+<ul>
+<li>
+<a href="https://arduino.luatos.com/" rel="nofollow">AirMCU</a>is an Arduino-compatible development platform for AirM2M's ARM-Cortex architecture microprocessors.</li>
+<li>We currently support the <a href="https://air001.cn/" rel="nofollow">Air001</a> and <a href="https://air32.cn/" rel="nofollow">Air32F103</a> series of microprocessors.</li>
+</ul>
+</li>
+<li>
+<p><strong>Akafugu</strong>: <a href="https://raw.githubusercontent.com/akafugu/akafugu_core/master/package_akafugu_index.json" rel="nofollow">https://raw.githubusercontent.com/akafugu/akafugu_core/master/package_akafugu_index.json</a></p>
+<ul>
+<li>Akafugu Breadboard Adapter (Internal 8MHz Clock)</li>
+<li>Akafugu Breadboard Adapter (External 16MHz Clock)</li>
+<li>Akafuino L</li>
+<li>Akafugu Nixie Clock</li>
+</ul>
+</li>
+<li>
+<p><strong>Alorium</strong>: <a href="https://raw.githubusercontent.com/AloriumTechnology/Arduino_Boards/master/package_aloriumtech_index.json" rel="nofollow">https://raw.githubusercontent.com/AloriumTechnology/Arduino_Boards/master/package_aloriumtech_index.json</a></p>
+<ul>
+<li>
+<a href="http://www.aloriumtech.com/" rel="nofollow">XLR8</a>: FPGA accelerated AVR compatible Boards</li>
+</ul>
+</li>
+<li>
+<p><strong>AmbaSat-1 Satellite</strong>: <a href="https://ambasat.com/boards/package_ambasat-1.com_index.json" rel="nofollow">https://ambasat.com/boards/package_ambasat-1.com_index.json</a></p>
+<ul>
+<li>
+<a href="https://ambasat.com/" rel="nofollow">AmbaSat-1 Space Satellite</a>: The Low Earth Orbit Space Satellite Development Kit</li>
+</ul>
+</li>
+<li>
+<p><strong>Ameba</strong>:</p>
+<ul>
+<li>
+<strong>Ameba1 Family</strong>: <a href="https://github.com/ambiot/amb1_arduino/raw/master/Arduino_package/package_realtek.com_ameba1_index.json">https://github.com/ambiot/amb1_arduino/raw/master/Arduino_package/package_realtek.com_ameba1_index.json</a>
+<ul>
+<li>
+<a href="https://github.com/ambiot/amb1_arduino">Ameba1</a> SoC with WiFi
+<ul>
+<li>AMB01 (RTL8195AM)</li>
+<li>AMB02 (RTL8710AF)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>AmebaD Family</strong>: <a href="https://github.com/ambiot/ambd_arduino/raw/master/Arduino_package/package_realtek.com_amebad_index.json">https://github.com/ambiot/ambd_arduino/raw/master/Arduino_package/package_realtek.com_amebad_index.json</a>
+<ul>
+<li>
+<a href="https://github.com/ambiot/ambd_arduino">AmebaD</a> SoC with WiFi 2.4/5G and BLE 5.0
+<ul>
+<li>AMB21 (RTL8722DM)</li>
+<li>AMB22 (RTL8722CSM)</li>
+<li>AMB23 (RTL8722DM)</li>
+<li>BW16 (RTL8720DN)</li>
+<li>BW16-TypeC (RTL8720DN)</li>
+<li>AW-CU488 Thing Plus (RTL8721DM)</li>
+<li>AMB25 (RTL8720DF)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>AmebaPro2 Family</strong>: <a href="https://github.com/ambiot/ambpro2_arduino/raw/main/Arduino_package/package_realtek.com_amebapro2_index.json">https://github.com/ambiot/ambpro2_arduino/raw/main/Arduino_package/package_realtek.com_amebapro2_index.json</a>
+<ul>
+<li>
+<a href="https://github.com/ambiot/ambpro2_arduino">AmebaPro2</a> SoC with WiFi 2.4/5G, BLE 5.1, ISP H.264/H.265 encoder, and Integrated Intelligent Engine
+<ul>
+<li>AMB82-MINI (RTL8735B)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>More information is <a href="https://www.amebaiot.com/en/ameba-arduino-summary/" rel="nofollow">here</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Arduino MKR1000 - Beta</strong>: <a href="http://downloads.arduino.cc/packages/package_mkr1000_index.json" rel="nofollow">http://downloads.arduino.cc/packages/package_mkr1000_index.json</a></p>
+<ul>
+<li>Hackster.io - MKR1000 Build</li>
+<li>This appears to be seriously outdated. MKR1000 support has long since been added to the standard Arduino SAMD Boards package available in Boards Manager without adding a 3rd party URL. Possibly this version was written for the beta test version of the MKR1000, which had a different pinout than the final version of the board?</li>
+</ul>
+</li>
+<li>
+<p><strong>Arachnid Labs</strong>: <a href="https://raw.githubusercontent.com/arachnidlabs/arachnidlabs-boards/master/package_arachnidlabs.com_boards_index.json" rel="nofollow">https://raw.githubusercontent.com/arachnidlabs/arachnidlabs-boards/master/package_arachnidlabs.com_boards_index.json</a></p>
+<ul>
+<li>Tsunami (<a href="http://www.arachnidlabs.com/tsunami/" rel="nofollow">http://www.arachnidlabs.com/tsunami/</a>) Signal generator based on Arduino Leonardo (AD9838)</li>
+</ul>
+</li>
+<li>
+<p><strong>Ardhat</strong>: <a href="https://ardhat.github.io/ardhat-board-support/arduino/package_ardhat_index.json" rel="nofollow">https://ardhat.github.io/ardhat-board-support/arduino/package_ardhat_index.json</a></p>
+<ul>
+<li><a href="http://forums.ardhat.com/" rel="nofollow">Ardhat forums</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Arduboy</strong>: <a href="https://arduboy.github.io/board-support/package_arduboy_index.json" rel="nofollow">https://arduboy.github.io/board-support/package_arduboy_index.json</a></p>
+<ul>
+<li>
+<a href="https://www.arduboy.com/" rel="nofollow">Arduboy</a> miniature game system and developer kit</li>
+</ul>
+</li>
+<li>
+<p><strong>Arducam</strong>: <a href="http://www.arducam.com/downloads/ESP8266_UNO/package_ArduCAM_index.json" rel="nofollow">http://www.arducam.com/downloads/ESP8266_UNO/package_ArduCAM_index.json</a></p>
+<ul>
+<li>Arducam ESP8266 UNO</li>
+<li>Arducam ESP32S UNO (<a href="http://www.arducam.com/downloads/ESP32_UNO/package_ArduCAM_ESP32S_UNO_index.json" rel="nofollow">http://www.arducam.com/downloads/ESP32_UNO/package_ArduCAM_ESP32S_UNO_index.json</a>)</li>
+</ul>
+</li>
+<li>
+<p><strong>Ariadne Bootloader</strong>: <a href="https://per1234.github.io/Ariadne-Bootloader/package_codebendercc_ariadne-bootloader_index.json" rel="nofollow">https://per1234.github.io/Ariadne-Bootloader/package_codebendercc_ariadne-bootloader_index.json</a></p>
+<ul>
+<li>Arduino Ethernet/Ethernet Shield/W5100 bootloader</li>
+</ul>
+</li>
+<li>
+<p><strong>Arrow</strong>: <a href="https://raw.githubusercontent.com/ioteamit/smarteverything-core/master/package_arrow_index.json" rel="nofollow">https://raw.githubusercontent.com/ioteamit/smarteverything-core/master/package_arrow_index.json</a></p>
+<ul>
+<li>SmartEverything Fox</li>
+<li>SmartEverything Lion</li>
+<li>SmartEverything Dragonfly</li>
+<li>SmartEverything Tiger</li>
+</ul>
+</li>
+<li>
+<p><strong>ATFlash</strong>: <a href="https://mesom.de/atflash/package_atflash_index.json" rel="nofollow">https://mesom.de/atflash/package_atflash_index.json</a></p>
+<ul>
+<li>Engage the following controllers with 8 MHz (and 9600 Baud) standalone on breadboard (without <em>anything</em> else!):</li>
+<li>ATtiny84A</li>
+<li>ATtiny85</li>
+<li>ATmega328P</li>
+<li>All can be programmed via an UNO and the integrated Tiny Safe Boot (TSB) bootloader or the integrated ISP programming</li>
+<li>More on <a href="https://mesom.de/atflash/index_english.html" rel="nofollow">the ATFlash website</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>ATmega &amp; ATtiny cores</strong>: <a href="http://www.leonardomiliani.com/repository/package_leonardomiliani.com_index.json" rel="nofollow">http://www.leonardomiliani.com/repository/package_leonardomiliani.com_index.json</a></p>
+<ul>
+<li>ATmega644/644P &amp; ATmega1284P core (w/bootloader)</li>
+<li>ATmega168P/328P core (for standalone MCUs)</li>
+<li>ATtiny24/44/84, ATtiny25/45/85, and ATtiny2313/4313 core (I2C &amp; SoftSerial)</li>
+</ul>
+</li>
+<li>
+<p><strong>ATmegaxxM1-C1</strong>: <a href="https://thomasonw.github.io/ATmegaxxM1-C1/package_thomasonw_ATmegaxxM1-C1_index.json" rel="nofollow">https://thomasonw.github.io/ATmegaxxM1-C1/package_thomasonw_ATmegaxxM1-C1_index.json</a></p>
+<ul>
+<li>ATmega32M1</li>
+<li>ATmega64M1</li>
+<li>Others to come.</li>
+</ul>
+</li>
+<li>
+<p><strong>ATtiny</strong>: <a href="https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json" rel="nofollow">https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json</a></p>
+<ul>
+<li>ATtiny45 / ATtiny85 and ATtiny44 / ATtiny84 support</li>
+</ul>
+</li>
+<li>
+<p><strong>ATtinyCore</strong>: <a href="http://drazzy.com/package_drazzy.com_index.json" rel="nofollow">http://drazzy.com/package_drazzy.com_index.json</a></p>
+<ul>
+<li>ATtiny25/45/85, 24/44/85, 261/461/861, 87/167, 48/88, 2313/4313</li>
+<li>ATtiny441/841, 1634, 828 (optiboot support on 841/1634/828)</li>
+</ul>
+</li>
+<li>
+<p><strong>AutomationDirect.com</strong>: <a href="https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json" rel="nofollow">https://raw.githubusercontent.com/facts-engineering/facts-engineering.github.io/master/package_productivity-P1AM-boardmanagermodule_index.json</a></p>
+<ul>
+<li>
+<a href="https://facts-engineering.github.io/" rel="nofollow">P1AM-100</a> The ProductivityOpen P1AM-100 is an automation platform compatible with Productivity1000 Series I/O modules, P1AM Series shields, and Arduino MKR format shields.</li>
+</ul>
+</li>
+<li>
+<p><strong>avdweb</strong>: <a href="https://raw.githubusercontent.com/avandalen/SAM15x15/master/package_avdweb_nl_index.json" rel="nofollow">https://raw.githubusercontent.com/avandalen/SAM15x15/master/package_avdweb_nl_index.json</a></p>
+<ul>
+<li>
+<a href="http://www.avdweb.nl/arduino/samd21/sam-15x15.html" rel="nofollow">SAM 15x15</a>: Arduino Zero compatible board</li>
+</ul>
+</li>
+<li>
+<p><strong>avr_boot</strong>: <a href="https://zevero.github.io/avr_boot/package_zevero_avr_boot_index.json" rel="nofollow">https://zevero.github.io/avr_boot/package_zevero_avr_boot_index.json</a></p>
+<ul>
+<li>SD card bootloader for ATmega processors:
+<ul>
+<li><a href="https://github.com/zevero/avr_boot/tree/gh-pages#supported-microcontrollers">List of supported microcontrollers</a></li>
+<li><a href="https://github.com/zevero/avr_boot/tree/gh-pages#supported-boards">List of supported boards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Azure IoT Hub (MXChip)</strong>: <a href="https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json" rel="nofollow">https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json</a></p>
+<ul>
+<li>AZ3166 v1.0</li>
+<li><a href="https://microsoft.github.io/azure-iot-developer-kit/" rel="nofollow">Azure IoT Hub</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Barebones ATmega Chips (no bootloader)</strong>: <a href="https://raw.githubusercontent.com/carlosefr/atmega/master/package_carlosefr_atmega_index.json" rel="nofollow">https://raw.githubusercontent.com/carlosefr/atmega/master/package_carlosefr_atmega_index.json</a></p>
+<ul>
+<li>ATmega8/168/168P/328/328P (internal and external clocks)</li>
+</ul>
+</li>
+<li>
+<p><strong>Breadboard Arduino</strong>: <a href="https://raw.githubusercontent.com/oshlab/Breadboard-Arduino/master/avr/boardsmanager/package_oshlab_breadboard_index.json" rel="nofollow">https://raw.githubusercontent.com/oshlab/Breadboard-Arduino/master/avr/boardsmanager/package_oshlab_breadboard_index.json</a></p>
+<ul>
+<li><a href="https://github.com/oshlab/Breadboard-Arduino">GitHub - Breadboard-Arduino</a></li>
+<li>ATmega328P (8 MHz internal)</li>
+</ul>
+</li>
+<li>
+<p><strong>Cadx Board for avr</strong> : <a href="https://novation.ai/robotics-diy/Cadxcore.json" rel="nofollow">https://novation.ai/robotics-diy/Cadxcore.json</a></p>
+<ul>
+<li>NovationBrain</li>
+<li>Atmega 8A</li>
+</ul>
+</li>
+<li>
+<p><strong>Canique</strong>: <a href="https://resources.canique.com/ide/package_canique_index.json" rel="nofollow">https://resources.canique.com/ide/package_canique_index.json</a></p>
+<ul>
+<li><a href="https://www.canique.com/mk1" rel="nofollow">Canique MK1</a></li>
+</ul>
+</li>
+<li>
+<p><strong>chip45</strong>: <a href="https://raw.githubusercontent.com/beegee-tokyo/Crumbuino-Chip45/main/package_crumbuino_index.json" rel="nofollow">https://raw.githubusercontent.com/beegee-tokyo/Crumbuino-Chip45/main/package_crumbuino_index.json</a></p>
+<ul>
+<li>Crumbuino Modules: <a href="https://github.com/beegee-tokyo/Crumbuino-Chip45">https://github.com/beegee-tokyo/Crumbuino-Chip45</a>
+<ul>
+<li><a href="https://www.chip45.com/arduino-nano-module.html" rel="nofollow">Crumbuino-Nano (ATmega328P)</a></li>
+<li><a href="https://www.chip45.com/arduino-mega-module.html" rel="nofollow">Crumbuino-NMega (ATmega2560)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>chipKIT</strong>: <a href="https://github.com/chipKIT32/chipKIT-core/raw/master/package_chipkit_index.json">https://github.com/chipKIT32/chipKIT-core/raw/master/package_chipkit_index.json</a></p>
+<ul>
+<li>Microchip PIC32 based boards</li>
+<li>All supported chipKIT boards including UNO32, MAX32, uC32, Fubarino SD, Fubarino Mini, WF32, WiFire, etc.</li>
+<li>Main chipKIT.net site <a href="http://chipkit.net/" rel="nofollow">http://chipkit.net/</a>
+</li>
+<li>chipKIT forums <a href="http://chipkit.net/forum" rel="nofollow">http://chipkit.net/forum</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>ClearCore</strong>: <a href="https://www.teknic.com/files/downloads/package_clearcore_index.json" rel="nofollow">https://www.teknic.com/files/downloads/package_clearcore_index.json</a></p>
+<ul>
+<li>Teknic ClearCore
+<ul>
+<li>A specialized motion and I/O controller that can control up to 4 axes of point-to-point motion (servos and stepper drives) with 13 points of mixed analog and digital industrial 24V I/O.</li>
+<li>C++ programmable, with Arduino wrapper</li>
+<li><a href="https://www.teknic.com/products/io-motion-controller/" rel="nofollow">More info</a></li>
+<li><a href="https://teknic-inc.github.io/ClearCore-library/" rel="nofollow">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>clkdiv8</strong>: <a href="http://clkdiv8.com/download/package_clkdiv8_index.json" rel="nofollow">http://clkdiv8.com/download/package_clkdiv8_index.json</a></p>
+<ul>
+<li>Sparrow V4 Board: <a href="https://clkdiv8.com/wiki/doku.php" rel="nofollow">http://clkdiv8.com</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Cosa</strong>: <a href="https://raw.githubusercontent.com/mikaelpatel/Cosa/master/package_cosa_index.json" rel="nofollow">https://raw.githubusercontent.com/mikaelpatel/Cosa/master/package_cosa_index.json</a></p>
+<ul>
+<li>AdaFruit ATmega32U4</li>
+<li>Anarduino MiniWireless</li>
+<li>Arduino Diecimila</li>
+<li>Arduino Duemilanove</li>
+<li>Arduino Leonardo</li>
+<li>Arduino Mega 1280</li>
+<li>Arduino Mega 2560</li>
+<li>Arduino Micro</li>
+<li>Arduino Nano</li>
+<li>Arduino Pro Micro</li>
+<li>Arduino Pro Mini</li>
+<li>Arduino Uno</li>
+<li>Breadboards: ATtinyX4, ATtinyX5, ATtinyX61, ATmega328, ATmega1284</li>
+<li>ITEAD Studio IBoard</li>
+<li>LilyPad Arduino</li>
+<li>LilyPad Arduino USB</li>
+<li>Moteino</li>
+<li>Moteino Mega</li>
+<li>Pinoccio Scout</li>
+<li>Microduino-Core</li>
+<li>Microduino-Core32u4</li>
+<li>Microduino-Core+</li>
+<li>PJRC Teensy 2.0</li>
+<li>PJRC Teensy++ 2.0</li>
+<li>Wicked Device WildFire V3</li>
+</ul>
+</li>
+<li>
+<p><strong>Cytron Technologies</strong>: <a href="https://raw.githubusercontent.com/CytronTechnologies/Cytron-Arduino-URL/master/package_cytron_index.json" rel="nofollow">https://raw.githubusercontent.com/CytronTechnologies/Cytron-Arduino-URL/master/package_cytron_index.json</a></p>
+<ul>
+<li>Cuteduino</li>
+<li>CT UNO</li>
+</ul>
+</li>
+<li>
+<p><strong>DFRobot</strong>: <a href="https://raw.githubusercontent.com/DFRobot/DFRobotDuinoBoard/master/package_dfrobot_index.json" rel="nofollow">https://raw.githubusercontent.com/DFRobot/DFRobotDuinoBoard/master/package_dfrobot_index.json</a></p>
+<ul>
+<li>Bluno M0 MainBoard(Nuc123LD4AN0)  * NUC123LD4AN0/P/PA/A</li>
+<li>DFRduino M0 MainBoard(Nuc123LD4AN0) * NUC123LD4AN0/P/PA/A</li>
+<li>Bluno M3 MainBoard(STM32) STM32/P/PA/A</li>
+</ul>
+</li>
+<li>
+<p><strong>DFRobotIot</strong>: <a href="https://raw.githubusercontent.com/DFRobot/DFRobotDuinoBoard/master/package_dfrobot_iot_mainboard.json" rel="nofollow">https://raw.githubusercontent.com/DFRobot/DFRobotDuinoBoard/master/package_dfrobot_iot_mainboard.json</a></p>
+<ul>
+<li>DFRobot 8266 Iot Mainboard (ESP8266)</li>
+</ul>
+</li>
+<li>
+<p><strong>DFRobot ESP32 Iot</strong>: <a href="https://git.oschina.net/dfrobot/FireBeetle-ESP32/raw/master/package_esp32_index.json" rel="nofollow">https://git.oschina.net/dfrobot/FireBeetle-ESP32/raw/master/package_esp32_index.json</a></p>
+<ul>
+<li>DFRobot ESP32 Iot Mainboard (Firebeetle ESP32 SKU: DFR0478)</li>
+</ul>
+</li>
+<li>
+<p><strong>DFRobot ESP32 v0.2+</strong>: <a href="https://gist.githubusercontent.com/lion2486/15b73228438756521e33d5c13cd777b6/raw/a65719862523455e3bb820e52731b9c72b8e864a/DFRobot_index.json" rel="nofollow">https://gist.githubusercontent.com/lion2486/15b73228438756521e33d5c13cd777b6/raw/a65719862523455e3bb820e52731b9c72b8e864a/DFRobot_index.json</a></p>
+</li>
+<li>
+<p><strong>Digistump (Official)</strong>: <a href="http://digistump.com/package_digistump_index.json" rel="nofollow">http://digistump.com/package_digistump_index.json</a></p>
+<ul>
+<li>Digispark (16.5 MHz)</li>
+<li>Digispark Pro (16 MHz)</li>
+<li>Digispark Pro (16 MHz) (32 byte buffer)</li>
+<li>Digispark Pro (16 MHz) (64 byte buffer)</li>
+<li>Digispark (16 MHz - No USB)</li>
+<li>Digispark (8 MHz - No USB)</li>
+<li>Digispark (1 MHz - No USB)</li>
+<li>Digistump DigiX</li>
+<li>Note: Includes driver installer for Windows installs</li>
+</ul>
+</li>
+<li>
+<p><strong>Digistump maintained</strong>: <a href="https://raw.githubusercontent.com/ArminJo/DigistumpArduino/master/package_digistump_index.json" rel="nofollow">https://raw.githubusercontent.com/ArminJo/DigistumpArduino/master/package_digistump_index.json</a></p>
+<ul>
+<li>Digispark (all frequencies)</li>
+<li>Digispark Pro (16 MHz)</li>
+<li>MH-ET LIVE Tiny88 (16 MHz ATTinyCore)</li>
+</ul>
+</li>
+<li>
+<p><strong>Dwengo</strong>: <a href="http://www.dwengo.org/sites/default/files/package_dwengo.org_dwenguino_index.json" rel="nofollow">http://www.dwengo.org/sites/default/files/package_dwengo.org_dwenguino_index.json</a></p>
+<ul>
+<li>Dwenguino (<a href="http://www.dwengo.org/tutorials/dwenguino/dwenguino-board" rel="nofollow">http://www.dwengo.org/tutorials/dwenguino/dwenguino-board</a>)</li>
+</ul>
+</li>
+<li>
+<p><strong>EBot Arduino core</strong>: <a href="https://raw.githubusercontent.com/sanu-krishnan/ebot-arduino-core/master/package_ebots.cc_index.json" rel="nofollow">https://raw.githubusercontent.com/sanu-krishnan/ebot-arduino-core/master/package_ebots.cc_index.json</a></p>
+<ul>
+<li>based on ATmega1284P</li>
+</ul>
+</li>
+<li>
+<p><strong>Electronica Elemon</strong>: <a href="https://raw.githubusercontent.com/MauricioJancic/Elemon/master/package_Elemon_index.json" rel="nofollow">https://raw.githubusercontent.com/MauricioJancic/Elemon/master/package_Elemon_index.json</a></p>
+<ul>
+<li>EESA-IOT 5.0 v1.0 more info in <a href="http://www.elemon.com.ar/NovedadesDet.aspx?Id=56" rel="nofollow">http://www.elemon.com.ar/NovedadesDet.aspx?Id=56</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elektor</strong></p>
+<ul>
+<li>Elektor.Labs <a href="http://www.elektor-labs.com/" rel="nofollow">support</a>, <a href="http://www.elektor.com/" rel="nofollow">main site</a>
+</li>
+<li>Elektor Uno R4 (ATmega328PB, <a href="https://www.elektormagazine.com/labs/elektorino-uno-r4-150790" rel="nofollow">project page</a>): <a href="https://github.com/ElektorLabs/Arduino/releases/download/v1.0.1/package_elektor_uno_r4_1_8_x_index.json">https://github.com/ElektorLabs/Arduino/releases/download/v1.0.1/package_elektor_uno_r4_1_8_x_index.json</a>
+</li>
+<li>Platino Universal AVR Board (supports 28-pin and 40-pin devices), <a href="https://www.elektormagazine.com/labs/platino-versatile-board-for-avr-microcontrollers-100892-150555" rel="nofollow">project page</a>)</li>
+<li>AVR Playground (dev board with many peripherals + mikroe Click slot, <a href="https://www.elektormagazine.com/labs/avr-playground-129009-2" rel="nofollow">project page</a>)</li>
+<li>eRIC Nitro (with on-board LPRS radio module), <a href="https://www.elektormagazine.com/labs/eric-nitro-150308" rel="nofollow">project page</a>):
+<a href="https://github.com/ElektorLabs/Arduino/releases/download/v1.0.1/package_elektor_index.json">https://github.com/ElektorLabs/Arduino/releases/download/v1.0.1/package_elektor_index.json</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Engimusing</strong>: <a href="https://engimusing.github.io/arduinoIDE/package_engimusing_modules_index.json" rel="nofollow">https://engimusing.github.io/arduinoIDE/package_engimusing_modules_index.json</a></p>
+<ul>
+<li>Engimusing has a variety of small boards which are centered around the Silicon Labs Gecko microprocessors.</li>
+<li>More information can be found at <a href="https://www.engimusing.com/" rel="nofollow">https://www.engimusing.com</a>.</li>
+<li>EFM32G232</li>
+<li>EFM32TG110</li>
+<li>EFM32TG222</li>
+<li>EFM32WG840</li>
+<li>EFM32ZG108</li>
+<li>EFM32ZG222</li>
+<li>EFM32ZGUSB</li>
+</ul>
+</li>
+<li>
+<p><strong>ESP8266 Community</strong>: This is the URL for the ESP8266 board package that you can add to the Arduino IDE: <a href="https://arduino.esp8266.com/stable/package_esp8266com_index.json" rel="nofollow">https://arduino.esp8266.com/stable/package_esp8266com_index.json</a></p>
+<ul>
+<li>Generic ESP8266 modules</li>
+<li>Olimex MOD-WIFI-ESP8266</li>
+<li>NodeMCU 0.9 (ESP-12)</li>
+<li>NodeMCU 1.0 (ESP-12E)</li>
+<li>Adafruit HUZZAH ESP8266 (ESP-12)</li>
+<li>SparkFun Thing</li>
+<li>SweetPea ESP-210</li>
+<li>WeMos D1</li>
+<li>WeMos D1 mini</li>
+</ul>
+</li>
+<li>
+<p><strong>Espressif ESP32</strong>: <a href="https://espressif.github.io/arduino-esp32/package_esp32_index.json" rel="nofollow">https://espressif.github.io/arduino-esp32/package_esp32_index.json</a></p>
+<ul>
+<li>Many variants of ESP32 boards - ESP32, -S2, -S3, -C3</li>
+<li>See wiki at <a href="https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html" rel="nofollow">https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>FemtoCow</strong>: <a href="https://raw.githubusercontent.com/FemtoCow/ATTinyCore/master/Downloads/package_femtocow_attiny_index.json" rel="nofollow">https://raw.githubusercontent.com/FemtoCow/ATTinyCore/master/Downloads/package_femtocow_attiny_index.json</a></p>
+<ul>
+<li>ATtiny84, ATtiny85, ATtiny861, ATtiny167, ATtiny2313, ATtiny88</li>
+</ul>
+</li>
+<li>
+<p><strong>FPGArduino</strong>: <a href="http://www.nxlab.fer.hr/fpgarduino/package_f32c_core_index.json" rel="nofollow">http://www.nxlab.fer.hr/fpgarduino/package_f32c_core_index.json</a></p>
+<ul>
+<li>ULX3S (Lattice ECP5 12F/25F/45F/85F)</li>
+<li>ULX2S SRAM</li>
+<li>Lattice FleaFPGA-Uno (Fleasystems Lattice MachXO2-7000HC)</li>
+<li>Lattice Brevia / Brevia2</li>
+<li>Mikroprojekt Kondor AX Lattice ECP5</li>
+<li>Mikroprojekt Sparrowhawk FX Lattice ECP3</li>
+<li>ReVerSE-U16 (Altera Cyclone-IV)</li>
+<li>Spartan-3 (3E, 3A, 3AN) Starter Kits</li>
+<li>Terasic DE0-Nano</li>
+<li>Terasic DE10-Lite (Altera MAX 10)</li>
+<li>Altera TB276 Board</li>
+<li>Basys-3</li>
+<li>Digilent ZYBO</li>
+<li>E2LP</li>
+<li>Nexys-3</li>
+<li>Xilinx ESA11 Artix-7 board</li>
+<li>Xilinx Scarab Hardware miniSpartan6+ Board</li>
+<li>Xilinx Numato Mimas V2 Spartan-6</li>
+<li>Xilinx Posedge-One Spartan-6</li>
+<li>Xilinx TB299 Board</li>
+<li>FPGArduino Generic f32c SoC</li>
+</ul>
+</li>
+<li>
+<p><strong>ftDuino</strong>: <a href="https://raw.githubusercontent.com/harbaum/ftduino/master/package_ftduino_index.json" rel="nofollow">https://raw.githubusercontent.com/harbaum/ftduino/master/package_ftduino_index.json</a></p>
+<ul>
+<li><a href="http://ftduino.de/" rel="nofollow">ftDuino fischertechnik compatible controller</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Goldilocks 1284p</strong>: <a href="https://raw.githubusercontent.com/feilipu/feilipu.github.io/master/package_goldilocks_index.json" rel="nofollow">https://raw.githubusercontent.com/feilipu/feilipu.github.io/master/package_goldilocks_index.json</a></p>
+<ul>
+<li>Goldilocks 20MHz</li>
+<li>Goldilocks 22.1184MHz</li>
+<li>Goldilocks Analogue (24.576MHz, integrated MCP4822 DAC &amp; Headphone Amp, Mic Amp for ADC, SPI SRAM &amp; EEPROM)</li>
+</ul>
+</li>
+<li>
+<p><strong>HidnSeek</strong>: <a href="http://hidnseek.github.io/hidnseek/package_hidnseek_boot_index.json" rel="nofollow">http://hidnseek.github.io/hidnseek/package_hidnseek_boot_index.json</a></p>
+<ul>
+<li>Main HidnSeek site: <a href="https://hidnseek.fr/" rel="nofollow">https://hidnseek.fr</a>
+</li>
+<li>An ATmega328P for IoT in low power mode with USB Battery charger, GPS, Accelerometer, Temperature, Pressure, Sigfox RF link (w/USB boot loader)</li>
+</ul>
+</li>
+<li>
+<p><strong>In System MCU</strong>:  <a href="http://www.bamfordresearch.com/files/package_jb23_insystemmcu_index.json" rel="nofollow">http://www.bamfordresearch.com/files/package_jb23_insystemmcu_index.json</a></p>
+<ul>
+<li>Support for the following configurations in-system or on a breadboard:
+<ul>
+<li>ATmega328P (8-16+ MHz Crystal)</li>
+<li>ATmega328P (8 MHz Internal)</li>
+</ul>
+</li>
+<li>With options for setting the CKDIV8 clock division fuse.</li>
+<li><a href="https://github.com/jb-23/in-system-mcu">GitHub - In System MCU</a></li>
+</ul>
+</li>
+<li>
+<p><strong>In-Circuit</strong>: <a href="http://library.radino.cc/Arduino_1_8/package_radino_radino32_index.json" rel="nofollow">http://library.radino.cc/Arduino_1_8/package_radino_radino32_index.json</a></p>
+<ul>
+<li>radino32 DW1000</li>
+<li>radino32 SX1272</li>
+<li>radino32 CC1101</li>
+<li>radino32 WiFi</li>
+<li>radino32 nRF8001</li>
+<li>radino CC1101</li>
+<li>radino WiFi</li>
+<li>radino nRF8001</li>
+<li>radino RF69</li>
+<li>radino RF233</li>
+</ul>
+</li>
+<li>
+<p><strong>Infineon Technologies</strong>: <a href="https://github.com/Infineon/Assets/releases/download/current/package_infineon_index.json">https://github.com/Infineon/Assets/releases/download/current/package_infineon_index.json</a></p>
+<ul>
+<li>GitHub Project: <a href="https://github.com/Infineon/XMC-for-Arduino">https://github.com/Infineon/XMC-for-Arduino</a>
+</li>
+<li>Supported Boards:
+<ul>
+<li><a href="https://www.infineon.com/cms/en/product/evaluation-boards/KIT_XMC_2GO_XMC1100_V1/productType.html?productType=db3a304443537c4e01436ccecb5d154f" rel="nofollow">XMC 2Go</a></li>
+<li><a href="https://www.infineon.com/cms/en/product/evaluation-boards/KIT_XMC11_BOOT_001/productType.html?productType=db3a30443b360d0e013b8f5163c46f62#ispnTab1" rel="nofollow">XMC1100 Boot Kit</a></li>
+<li><a href="https://www.infineon.com/cms/en/product/evaluation-boards/KIT_XMC47_RELAX_LITE_V1/productType.html?productType=5546d46250cc1fdf0150f6a2788e6e89" rel="nofollow">XMC4700 Relax Kit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>IntoRobot</strong>: <a href="https://github.com/IntoRobot/IntoRobotPackages-ArduinoIDE/releases/download/1.0.0/package_intorobot_index.json">https://github.com/IntoRobot/IntoRobotPackages-ArduinoIDE/releases/download/1.0.0/package_intorobot_index.json</a></p>
+<ul>
+<li>IntoRobot-Atom (STM32F103)</li>
+<li>IntoRobot-Neutron (STM32F411)</li>
+<li>IntoRobot-Nut (ESP8266)</li>
+<li>IntoRobot-Fig (ESP32)</li>
+</ul>
+</li>
+<li>
+<p><strong>IOTEAM</strong>: <a href="https://raw.githubusercontent.com/ioteamit/ioteam-arduino-core/master/package_ioteam_index.json" rel="nofollow">https://raw.githubusercontent.com/ioteamit/ioteam-arduino-core/master/package_ioteam_index.json</a></p>
+<ul>
+<li>Dustino</li>
+</ul>
+</li>
+<li>
+<p><strong>Iteaduino Lite</strong>: <a href="https://raw.githubusercontent.com/udif/ITEADSW_Iteaduino-Lite-HSP/master/package/package_iteaduino_lite_index.json" rel="nofollow">https://raw.githubusercontent.com/udif/ITEADSW_Iteaduino-Lite-HSP/master/package/package_iteaduino_lite_index.json</a></p>
+<ul>
+<li>
+<a href="https://www.itead.cc/wiki/Iteaduino_Lite" rel="nofollow">Iteaduino Lite</a> is a cheap Arduino clone (no longer sold), which is based on an ATmega88 chip clone called LGT8F88A.</li>
+<li>This package is fork of the original ITead GitHub repository which was intended to be manually installed over an Arduino 1.0.x or 1.5.x and did not contain a JSON based plugin release.</li>
+</ul>
+</li>
+<li>
+<p><strong>Kristian Sloth Lauszus</strong>: <a href="https://raw.githubusercontent.com/Lauszus/Sanguino/master/package_lauszus_sanguino_index.json" rel="nofollow">https://raw.githubusercontent.com/Lauszus/Sanguino/master/package_lauszus_sanguino_index.json</a></p>
+<ul>
+<li>Sanguino</li>
+</ul>
+</li>
+<li>
+<p><strong>Hologram Dash/DashPro (Official)</strong>: <a href="http://downloads.hologram.io/arduino/package_konekt_index.json" rel="nofollow">http://downloads.hologram.io/arduino/package_konekt_index.json</a></p>
+<ul>
+<li>Cortex M4-based global cellular dev kits, support for all board variants, support for USB and over-the-air programming straight from within Arduino IDE. Formerly "Konekt".</li>
+<li>GitHub: <a href="https://github.com/HologramEducation/hologram-dash-arduino-integration">https://github.com/HologramEducation/hologram-dash-arduino-integration</a>
+</li>
+<li>Tutorial: <a href="https://www.hologram.io/guides/dash-programming-and-firmware" rel="nofollow">https://www.hologram.io/guides/dash-programming-and-firmware</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Laika</strong>: <a href="https://raw.githubusercontent.com/eightdog/laika_arduino/master/IDE_Board_Manager/package_project_laika.com_index.json" rel="nofollow">https://raw.githubusercontent.com/eightdog/laika_arduino/master/IDE_Board_Manager/package_project_laika.com_index.json</a></p>
+<ul>
+<li>Laika Explorer:
+<ul>
+<li>ATmega88PA</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Lattuino</strong>: <a href="http://fpgalibre.sf.net/Lattuino/package_lattuino_index.json" rel="nofollow">http://fpgalibre.sf.net/Lattuino/package_lattuino_index.json</a></p>
+<ul>
+<li>Lattuino is an Arduino implementation using an iCE40 FPGA</li>
+<li>Is compatible with Arduino UNO, but with less memory</li>
+<li>Web page: <a href="http://fpgalibre.sourceforge.net/Lattuino_en/index.html" rel="nofollow">http://fpgalibre.sourceforge.net/Lattuino_en/index.html</a>
+</li>
+<li>FPGA board used: <a href="http://fpgalibre.sourceforge.net/Kefir_en/index.html" rel="nofollow">http://fpgalibre.sourceforge.net/Kefir_en/index.html</a>
+</li>
+<li>Lattuino IP and API: <a href="https://github.com/INTI-CMNB/Lattuino_IP_Core">https://github.com/INTI-CMNB/Lattuino_IP_Core</a>
+</li>
+<li>Support IP cores: <a href="https://github.com/FPGALibre/fpgacores">https://github.com/FPGALibre/fpgacores</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>LinkIt ONE (Seeed Studio)</strong>: <a href="http://download.labs.mediatek.com/package_mtk_linkit_index.json" rel="nofollow">http://download.labs.mediatek.com/package_mtk_linkit_index.json</a></p>
+<ul>
+<li>MediaTek v1.0</li>
+</ul>
+</li>
+<li>
+<p><strong>LinkIt Smart 7688 Duo (Seeed Studio)</strong>: <a href="http://download.labs.mediatek.com/package_mtk_linkit_smart_7688_index.json" rel="nofollow">http://download.labs.mediatek.com/package_mtk_linkit_smart_7688_index.json</a></p>
+<ul>
+<li>LinkIt Smart 7688 Duo(ATmega32U4)(3.3V)(8MHz)</li>
+</ul>
+</li>
+<li>
+<p><strong>LinkIt 7697</strong>: <a href="http://download.labs.mediatek.com/package_mtk_linkit_7697_index.json" rel="nofollow">http://download.labs.mediatek.com/package_mtk_linkit_7697_index.json</a></p>
+<ul>
+<li>LinkIt 7697</li>
+</ul>
+</li>
+<li>
+<p><strong>LGT8F328P</strong>: <a href="https://raw.githubusercontent.com/dbuezas/lgt8fx/master/package_lgt8fx_index.json" rel="nofollow">https://raw.githubusercontent.com/dbuezas/lgt8fx/master/package_lgt8fx_index.json</a></p>
+<ul>
+<li>Clone of the atmega328 by Logic Green</li>
+</ul>
+</li>
+<li>
+<p><strong>M5Stack</strong>: <a href="https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json" rel="nofollow">https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json</a></p>
+<ul>
+<li>
+<a href="https://docs.m5stack.com/en/core/m5stickc" rel="nofollow">M5StickC</a> (ESP32)</li>
+<li>
+<a href="https://docs.m5stack.com/en/core/m5stickc_plus" rel="nofollow">M5StickC PLUS</a> (ESP32-PICO-D4)</li>
+<li>
+<a href="https://docs.m5stack.com/en/core/core2" rel="nofollow">M5Core2</a> (ESP32)</li>
+<li><a href="https://docs.m5stack.com/en/core/core2_for_aws" rel="nofollow">Core2 for AWS</a></li>
+<li><a href="https://docs.m5stack.com/en/core/tough" rel="nofollow">TOUGH</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Macchina</strong>: <a href="https://macchina.cc/package_macchina_index.json" rel="nofollow">https://macchina.cc/package_macchina_index.json</a></p>
+<ul>
+<li><a href="https://www.macchina.cc/" rel="nofollow">Macchina M2</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Move-Xduino by <a href="https://www.move-x.it/" rel="nofollow">Move-X</a></strong>: <a href="https://github.com/Move-X/Move-Xduino/raw/main/package_move-x_index.json">https://github.com/Move-X/Move-Xduino/raw/main/package_move-x_index.json</a></p>
+<ul>
+<li>Provide support of the following MAMWLE based boards:
+<ul>
+<li><a href="https://www.move-x.it/mamwle-module/" rel="nofollow">MAMWLE-XX</a></li>
+<li><a href="https://www.move-x.it/cicerone-board/" rel="nofollow">Cicerone Board</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>MassDuino</strong>: <a href="https://raw.githubusercontent.com/dimag0g/massduino_boards/master/package_massduino_index.json" rel="nofollow">https://raw.githubusercontent.com/dimag0g/massduino_boards/master/package_massduino_index.json</a></p>
+<ul>
+<li>MassDuino UNO Pro (MD3248P-LQFP48)</li>
+<li>MassDuino UNO (MD3208P-LQFP32)</li>
+<li>MassDuino UNO LC (MD328D-LQFP32)</li>
+<li>MassDuino UNO R4 (MD88D-SSOP20)</li>
+</ul>
+</li>
+<li>
+<p><strong>MattairTech LLC</strong>: <a href="https://www.mattairtech.com/software/arduino/package_MattairTech_index.json" rel="nofollow">https://www.mattairtech.com/software/arduino/package_MattairTech_index.json</a></p>
+<ul>
+<li>MT-D21E (ATSAMD21ExxA)</li>
+<li>MT-D11 (ATSAMD11D14AM)</li>
+<li>MT-DB-U1 (AT90USB162)</li>
+<li>MT-DB-U2 (ATmega32U2)</li>
+<li>MT-DB-U4 (ATmeaga32U4)</li>
+<li>MT-DB-U6 (AT90USB646/AT90USB1286)</li>
+</ul>
+</li>
+<li>
+<p><strong>Maxim Integrated</strong>: <a href="https://raw.githubusercontent.com/MaximIntegratedMicros/arduino-collateral/master/package_maxim_index.json" rel="nofollow">https://raw.githubusercontent.com/MaximIntegratedMicros/arduino-collateral/master/package_maxim_index.json</a></p>
+<ul>
+<li>GitHub Project: <a href="https://github.com/MaximIntegratedMicros/arduino-max326xx">https://github.com/MaximIntegratedMicros/arduino-max326xx</a>
+</li>
+<li>Supported Boards:
+<ul>
+<li><a href="https://www.maximintegrated.com/en/products/microcontrollers/MAX32620FTHR.html" rel="nofollow">MAX32620FTHR</a></li>
+<li><a href="https://www.maximintegrated.com/en/products/microcontrollers/MAX32625MBED.html" rel="nofollow">MAX32625MBED</a></li>
+<li><a href="https://www.maximintegrated.com/en/products/microcontrollers/MAX32630FTHR.html" rel="nofollow">MAX32630FTHR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>MegaCore</strong>: <a href="https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json" rel="nofollow">https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json</a></p>
+<ul>
+<li>ATmega2561/V</li>
+<li>ATmega2560/V</li>
+<li>ATmega1281/V</li>
+<li>ATmega1280/V</li>
+<li>ATmega640/V</li>
+<li>ATmega128/L/A</li>
+<li>ATmega64/L/A</li>
+</ul>
+</li>
+<li>
+<p><strong>MicroCore</strong>: <a href="https://mcudude.github.io/MicroCore/package_MCUdude_MicroCore_index.json" rel="nofollow">https://mcudude.github.io/MicroCore/package_MCUdude_MicroCore_index.json</a></p>
+<ul>
+<li>ATtiny13</li>
+</ul>
+</li>
+<li>
+<p><strong>MightyCore</strong>: <a href="https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json" rel="nofollow">https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json</a></p>
+<ul>
+<li>ATmega1284/P</li>
+<li>ATmega644/P/PA/A</li>
+<li>ATmega324P/PA/A</li>
+<li>ATmega164P/PA/A</li>
+<li>ATmega32</li>
+<li>ATmega16</li>
+<li>ATmega8535</li>
+</ul>
+</li>
+<li>
+<p><strong>MiniCore</strong>: <a href="https://mcudude.github.io/MiniCore/package_MCUdude_MiniCore_index.json" rel="nofollow">https://mcudude.github.io/MiniCore/package_MCUdude_MiniCore_index.json</a></p>
+<ul>
+<li>ATmega328/P/PA/A</li>
+<li>ATmega168/P/PA/A</li>
+<li>ATmega88/P/PA/A</li>
+<li>ATmega48/P/PA/A</li>
+<li>ATmega8</li>
+</ul>
+</li>
+<li>
+<p><strong>Moteino (Official)</strong>: <a href="https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json" rel="nofollow">https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json</a></p>
+<ul>
+<li>Moteino (16 MHz)</li>
+<li>MoteinoMEGA (16 MHz)</li>
+<li><a href="http://lowpowerlab.com/moteino" rel="nofollow">All about Moteino</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Move38</strong>: <a href="https://boardsmanager.com/package_move38.com-blinks_index.json" rel="nofollow">https://boardsmanager.com/package_move38.com-blinks_index.json</a></p>
+<ul>
+<li><a href="https://move38.com/pages/developer" rel="nofollow">blink</a></li>
+</ul>
+</li>
+<li>
+<p><strong>MSP432 Red Launchpad boards from TI</strong>: <a href="https://github.com/ndroid/msp432-core/raw/main/package_msp432_index.json">https://github.com/ndroid/msp432-core/raw/main/package_msp432_index.json</a></p>
+<ul>
+<li>GitHub Project: <a href="https://github.com/ndroid/msp432-core">https://github.com/ndroid/msp432-core</a>
+<ul>
+<li>Adapted from Energia cores</li>
+<li>Extended features and libraries (added support for MSP432P4111)</li>
+</ul>
+</li>
+<li>MSP432P4xx Boards:
+<ul>
+<li>Texas Instrument MSP432P401R Red Launchpad</li>
+<li>Texas Instrument MSP432P4111 Red Launchpad</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Navspark</strong>: <a href="http://navspark.mybigcommerce.com/content/package_navspark_index.json" rel="nofollow">http://navspark.mybigcommerce.com/content/package_navspark_index.json</a></p>
+<ul>
+<li>Navspark-GL: Arduino Compatible Development Board with GPS/GLONASS</li>
+<li>NavSpark: Arduino Compatible Development Board with GPS</li>
+</ul>
+</li>
+<li>
+<p><strong>NeKuNeKo</strong>: <a href="https://nekuneko.github.io/arduino-board-index/package_nekuneko_index.json" rel="nofollow">https://nekuneko.github.io/arduino-board-index/package_nekuneko_index.json</a></p>
+<ul>
+<li>SoK Zero Dawn (SAMD21J18A)</li>
+<li>SoK M4 Advance (SAMD51J20A)</li>
+</ul>
+</li>
+<li>
+<p><strong>NicoHood HoodLoader2</strong>: <a href="https://raw.githubusercontent.com/NicoHood/HoodLoader2/master/package_NicoHood_HoodLoader2_index.json" rel="nofollow">https://raw.githubusercontent.com/NicoHood/HoodLoader2/master/package_NicoHood_HoodLoader2_index.json</a></p>
+<ul>
+<li>ATmega16U2</li>
+<li>ATmega32U2</li>
+<li>ATmega8U2</li>
+<li>AT90USB162</li>
+<li>Original ATmega16U2 DFU Firmware</li>
+<li>Arduino Uno HID-Bridge</li>
+<li>Arduino Mega 2560 HID-Bridge</li>
+</ul>
+</li>
+<li>
+<p><strong>Nordic Semiconductor nRF5 based boards</strong>: <a href="https://sandeepmistry.github.io/arduino-nRF5/package_nRF5_boards_index.json" rel="nofollow">https://sandeepmistry.github.io/arduino-nRF5/package_nRF5_boards_index.json</a></p>
+<ul>
+<li>GitHub Project: <a href="https://github.com/sandeepmistry/arduino-nRF5">https://github.com/sandeepmistry/arduino-nRF5</a>
+</li>
+<li>Plain nRF52 MCU Supported Boards:
+<ul>
+<li>Nordic Semiconductor nRF52 DK
+<ul>
+<li>Shenzhen Taida Century Technology nRF52 low cost development board</li>
+<li>RedBear Blend 2</li>
+<li>RedBear Nano 2</li>
+</ul>
+</li>
+<li>nRF51 Supported Boards:
+<ul>
+<li>Plain nRF51 MCU</li>
+<li>BBC micro:bit</li>
+<li>Bluz DK</li>
+<li>Nordic Semiconductor nRF51822 Development Kit + nRF51422 Development Kit</li>
+<li>PCA10000</li>
+<li>PCA10001, PCA10002, PCA10003, PCA10004 via nRF6310(nRFgo)</li>
+<li>Nordic Semiconductor NRF51 Dongle</li>
+<li>OSHChip</li>
+<li>RedBearLab BLE Nano</li>
+<li>RedBearLab nRF51822</li>
+<li>Waveshare BLE400</li>
+<li>ng-beacon</li>
+<li>Seeedstudio Tinyble</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Northern Widget</strong>: <a href="https://raw.githubusercontent.com/NorthernWidget/Arduino_Boards/master/package_NorthernWidget_index.json" rel="nofollow">https://raw.githubusercontent.com/NorthernWidget/Arduino_Boards/master/package_NorthernWidget_index.json</a></p>
+<ul>
+<li>ALog BottleLogger (legacy)</li>
+<li>ALog BottleLogger v2</li>
+<li>ATMega644p 8MHz</li>
+<li>ATMega1284p 8MHz</li>
+</ul>
+</li>
+<li>
+<p><strong>OLIMEX</strong>:</p>
+<ul>
+<li>
+<strong>OLIMEX (AVR BOARDS)</strong>: <a href="https://raw.githubusercontent.com/OLIMEX/Arduino_configurations/master/AVR/package_olimex_avr_index.json" rel="nofollow">https://raw.githubusercontent.com/OLIMEX/Arduino_configurations/master/AVR/package_olimex_avr_index.json</a>
+<ul>
+<li>Examples for OLIMEX AVR Arduino-like boards (OLIMEXINO-328, OLIMEXINO-32U4, OLIMEXINO-NANO, etc)</li>
+<li>Examples for OLIMEX AVR Digispark-like boards (OLIMEXINO-85, OLIMEXINO-85S, OLIMEXINO-85BC, FOSDEM-85, etc)</li>
+<li>Libraries and examples for various OLIMEX shields and UEXT extension boards (MOD-LCD1x9, SHIELD-LCD16x2, MOD-IO2, etc)</li>
+</ul>
+</li>
+<li>
+<strong>OLIMEX (PIC BOARDS)</strong>: <a href="https://raw.githubusercontent.com/OLIMEX/Arduino_configurations/master/PIC/package_olimex_pic_index.json" rel="nofollow">https://raw.githubusercontent.com/OLIMEX/Arduino_configurations/master/PIC/package_olimex_pic_index.json</a>
+<ul>
+<li>Examples for PIC32-PINGUINO, PIC32-PINGUINO-OTG</li>
+<li>Library and examples for OLIMEX UEXT extension board (MOD-GPS)</li>
+<li>Note: Since the tools (compiler, uploader, drivers) are from chipKIT's package you have to add their *.json file (<a href="https://github.com/chipKIT32/chipKIT-core/raw/master/package_chipkit_index.json">https://github.com/chipKIT32/chipKIT-core/raw/master/package_chipkit_index.json</a>) in the list of "Additional Boards Managers URLs" (installation of chipKIT's package is not required).</li>
+</ul>
+</li>
+<li>
+<strong>OLIMEX (STM BOARDS)</strong>: <a href="https://raw.githubusercontent.com/OLIMEX/Arduino_configurations/master/STM/package_olimex_stm_index.json" rel="nofollow">https://raw.githubusercontent.com/OLIMEX/Arduino_configurations/master/STM/package_olimex_stm_index.json</a>
+<ul>
+<li>Examples for OLIMEX STM32-E407</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>PJRC</strong>: <a href="https://www.pjrc.com/teensy/package_teensy_index.json" rel="nofollow">https://www.pjrc.com/teensy/package_teensy_index.json</a></p>
+<ul>
+<li>
+<a href="https://www.pjrc.com/" rel="nofollow">Teensy LC/2/3/4</a> Teensy LC, 2.0, 2.0++, 3.X, &amp; 4.X</li>
+</ul>
+</li>
+<li>
+<p><strong>OMC</strong>: <a href="https://raw.githubusercontent.com/ThamesValleyReprapUserGroup/Beta-TVRRUG-Mendel90/master/Added-Documents/OMC/package_omc_index.json" rel="nofollow">https://raw.githubusercontent.com/ThamesValleyReprapUserGroup/Beta-TVRRUG-Mendel90/master/Added-Documents/OMC/package_omc_index.json</a></p>
+<ul>
+<li>
+<a href="http://www.tvrrug.org.uk/" rel="nofollow">OMC</a>: Open Motion Controller</li>
+</ul>
+</li>
+<li>
+<p><strong>ROBOTIS</strong>: <a href="https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json" rel="nofollow">https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json</a></p>
+</li>
+<li>
+<p><strong>Open Panzer</strong>: <a href="https://openpanzerproject.github.io/OpenPanzerBoards/package_openpanzer_index.json" rel="nofollow">https://openpanzerproject.github.io/OpenPanzerBoards/package_openpanzer_index.json</a></p>
+<ul>
+<li>
+<a href="https://github.com/OpenPanzerProject/TCB">TCB (Tank Control Board)</a> with ATmega2560 processor</li>
+</ul>
+</li>
+<li>
+<p><strong>OpenTracker</strong>: <a href="https://raw.githubusercontent.com/geolink/opentracker-arduino-board/master/package_opentracker_index.json" rel="nofollow">https://raw.githubusercontent.com/geolink/opentracker-arduino-board/master/package_opentracker_index.json</a></p>
+<ul>
+<li>GeoLink <a href="https://geolink.io/opentracker.php" rel="nofollow">OpenTracker</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>panStamp</strong>: <a href="http://panstamp.org/arduino/package_panstamp_index.json" rel="nofollow">http://panstamp.org/arduino/package_panstamp_index.json</a></p>
+<ul>
+<li>
+<a href="https://github.com/panStamp/panstamp/wiki/panStamp-AVR-2.-Technical-details">panStamp AVR</a> w/ ATmega328P</li>
+<li>
+<a href="https://github.com/panStamp/panstamp/wiki/panStamp-NRG-2.-Technical-details">panStamp NRG</a> w/ CC430F5137 (TI MSP430 core + CC1101)</li>
+</ul>
+</li>
+<li>
+<p><strong>Pololu</strong>: <a href="https://files.pololu.com/arduino/package_pololu_index.json" rel="nofollow">https://files.pololu.com/arduino/package_pololu_index.json</a></p>
+<ul>
+<li><a href="https://www.pololu.com/category/149/a-star-programmable-controllers" rel="nofollow">Pololu A-Star Programmable Controllers</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Quirkbot</strong>: <a href="https://raw.githubusercontent.com/Quirkbot/QuirkbotArduinoHardware/master/package_quirkbot.com_index.json" rel="nofollow">https://raw.githubusercontent.com/Quirkbot/QuirkbotArduinoHardware/master/package_quirkbot.com_index.json</a></p>
+<ul>
+<li>
+<a href="http://quirkbot.com/" rel="nofollow">Quirkbot</a> support</li>
+</ul>
+</li>
+<li>
+<p><strong>RAKWireless</strong>: <a href="https://raw.githubusercontent.com/RAKwireless/RAKwireless-Arduino-BSP-Index/main/package_rakwireless_index.json" rel="nofollow">https://raw.githubusercontent.com/RAKwireless/RAKwireless-Arduino-BSP-Index/main/package_rakwireless_index.json</a></p>
+<ul>
+<li>
+<a href="https://www.rakwireless.com/" rel="nofollow">RAKWireless</a> board support</li>
+</ul>
+</li>
+<li>
+<p><strong>Raspberry Pi RP2040 Boards</strong>: <a href="https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json">https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json</a></p>
+<ul>
+<li>All major RP2040-based boards</li>
+</ul>
+</li>
+<li>
+<p><strong>RedBear</strong>: <a href="https://redbearlab.github.io/arduino/package_redbear_index.json" rel="nofollow">https://redbearlab.github.io/arduino/package_redbear_index.json</a></p>
+<ul>
+<li>RedBear Duo (Cortex-M3, WiFi + BLE)</li>
+</ul>
+</li>
+<li>
+<p><strong>RedBearLab</strong>: <a href="https://redbearlab.github.io/arduino/package_redbearlab_index.json" rel="nofollow">https://redbearlab.github.io/arduino/package_redbearlab_index.json</a></p>
+<ul>
+<li>RedBearLab AVR+BLE (<a href="http://www.atmel.com/devices/atmega32u4.aspx" rel="nofollow">ATmega32U4</a> + <a href="https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF8000-series" rel="nofollow">nRF8001</a>) Boards (Blend and Blend Micro).</li>
+</ul>
+</li>
+<li>
+<p><strong>Riddle&amp;Code Ltd.</strong>: <a href="https://raw.githubusercontent.com/RiddleAndCode/RnCAtmega256RFR2/master/Board_Manager/package_rnc_index.json" rel="nofollow">https://raw.githubusercontent.com/RiddleAndCode/RnCAtmega256RFR2/master/Board_Manager/package_rnc_index.json</a></p>
+<ul>
+<li>ATmega256RFR2 Xplained Pro Evaluation Kit (Complete package including bootloader)</li>
+</ul>
+</li>
+<li>
+<p><strong>RIG by REKA</strong>: <a href="http://rig.reka.com.my/package_rig_index.json" rel="nofollow">http://rig.reka.com.my/package_rig_index.json</a></p>
+<ul>
+<li>
+<a href="https://reka.com.my/metier/artifact/rig/" rel="nofollow">RIG Cell Lite</a> Cellular Based IoT Board</li>
+</ul>
+</li>
+<li>
+<p><strong>RobotCing</strong>: <a href="https://raw.githubusercontent.com/RobotCing/Cing/master/Software/Packages/package_RobotCing_index.json" rel="nofollow">https://raw.githubusercontent.com/RobotCing/Cing/master/Software/Packages/package_RobotCing_index.json</a></p>
+<ul>
+<li>ATtiny85</li>
+<li>ATtiny84</li>
+<li>ATmega8</li>
+<li>ATmega328</li>
+<li>ATmega32U4</li>
+</ul>
+</li>
+<li>
+<p><strong>Seeed Studio</strong>:</p>
+<ul>
+<li>
+<strong>Seeeduino</strong>: <a href="https://raw.githubusercontent.com/Seeed-Studio/Seeed_Platform/master/package_legacy_seeeduino_boards_index.json" rel="nofollow">https://raw.githubusercontent.com/Seeed-Studio/Seeed_Platform/master/package_legacy_seeeduino_boards_index.json</a>
+<ul>
+<li><a href="https://www.seeedstudio.com/Seeeduino-V4-2-p-2517.html" rel="nofollow">Seeeduino V4.2(ATmega328P)</a></li>
+<li><a href="https://www.seeedstudio.com/Seeeduino-Mega-ATmega2560.html" rel="nofollow">Seeeduino Mega 2560</a></li>
+<li><a href="https://www.seeedstudio.com/Seeeduino-V4-p-669.html" rel="nofollow">Seeeduino V4(ATmega328P)</a></li>
+<li><a href="https://www.seeedstudio.com/Seeeduino-Lotus-V1-1-ATMega328-Board-with-Grove-Interface.html" rel="nofollow">Seeeduino Lotus</a></li>
+<li><a href="https://www.seeedstudio.com/Seeeduino-Lite.html" rel="nofollow">Seeeduino Lite</a></li>
+</ul>
+</li>
+<li>
+<strong>Seeed SAMD Boards</strong>: <a href="https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json" rel="nofollow">https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json</a>
+<ul>
+<li><a href="https://www.seeedstudio.com/Wio-Terminal-p-4509.html" rel="nofollow">Wio Terminal</a></li>
+<li><a href="https://www.seeedstudio.com/Seeeduino-XIAO-Arduino-Microcontroller-SAMD21-Cortex-M0+-p-4426.html" rel="nofollow">Seeeduino XIAO</a></li>
+<li>Seeeduino Zero
+<ul>
+<li><a href="https://www.seeedstudio.com/Seeeduino-Cortex-M0-p-4070.html" rel="nofollow">Seeeduino Cortex-M0+</a></li>
+<li><a href="https://www.seeedstudio.com/Seeeduino-Lotus-Cortex-M0-p-2896.html" rel="nofollow">Seeeduino Lotus Cortex-M0+</a></li>
+<li><a href="https://www.seeedstudio.com/Wio-Lite-W600-p-4155.html" rel="nofollow">Wio Lite W600 - ATSAMD21 Cortex-M0 Wireless Development Board</a></li>
+<li><a href="https://www.seeedstudio.com/Wio-Lite-MG126-p-4189.html" rel="nofollow">Wio Lite MG126 - ATSAMD21 Cortex-M0 Blue Wireless Development Board</a></li>
+</ul>
+</li>
+<li><a href="https://www.seeedstudio.com/Seeeduino-LoRaWAN-p-2780.html" rel="nofollow">Seeeduino LoRaWAN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Seeed K.K.</strong>: <a href="http://www.seeed.co.jp/package_SeeedJP_index.json" rel="nofollow">http://www.seeed.co.jp/package_SeeedJP_index.json</a></p>
+<ul>
+<li>
+<strong>SeeedJP STM32 Boards</strong>
+<ul>
+<li>Seeed Wio LTE Cat.1</li>
+<li>Seeed Wio 3G</li>
+<li>Seeed Wio LTE M1/NB1(BG96)</li>
+</ul>
+</li>
+<li>
+<strong>SeeedJP ReButton</strong>
+<ul>
+<li>Seeed ReButton</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Simba</strong>:</p>
+<ul>
+<li>
+<strong>Simba AVR</strong>: <a href="https://raw.githubusercontent.com/eerimoq/simba-releases/master/arduino/avr/package_simba_avr_index.json" rel="nofollow">https://raw.githubusercontent.com/eerimoq/simba-releases/master/arduino/avr/package_simba_avr_index.json</a>
+<ul>
+<li>Arduino Mega</li>
+<li>Arduino Nano</li>
+<li>Arduino Pro Micro</li>
+<li>Arduino Uno</li>
+</ul>
+</li>
+<li>
+<strong>Simba ESP</strong>: <a href="https://raw.githubusercontent.com/eerimoq/simba-releases/master/arduino/esp/package_simba_esp_index.json" rel="nofollow">https://raw.githubusercontent.com/eerimoq/simba-releases/master/arduino/esp/package_simba_esp_index.json</a>
+<ul>
+<li>ESP-01</li>
+<li>ESP-12E</li>
+</ul>
+</li>
+<li>
+<strong>Simba SAM</strong>: <a href="https://raw.githubusercontent.com/eerimoq/simba-releases/master/arduino/sam/package_simba_sam_index.json" rel="nofollow">https://raw.githubusercontent.com/eerimoq/simba-releases/master/arduino/sam/package_simba_sam_index.json</a>
+<ul>
+<li>Arduino Due</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Sipeed</strong>:</p>
+<ul>
+<li>
+<strong>kendryte k210 (MAIX)</strong>: <a href="http://dl.sipeed.com/MAIX/Maixduino/package_Maixduino_k210_index.json" rel="nofollow">http://dl.sipeed.com/MAIX/Maixduino/package_Maixduino_k210_index.json</a>
+<ul>
+<li>MAIX One Dock</li>
+<li>MAIX Bit</li>
+<li>MAIX Go</li>
+</ul>
+</li>
+<li>
+<strong>K210 (MAIX) CDN</strong>: <a href="http://dl.sipeed.com/MAIX/Maixduino/package_Maixduino_k210_dl_cdn_index.json" rel="nofollow">http://dl.sipeed.com/MAIX/Maixduino/package_Maixduino_k210_dl_cdn_index.json</a>
+<ul>
+<li>CDN mirror of K210 (MAIX)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>SODAQ</strong>:</p>
+<ul>
+<li>
+<strong>SODAQ AVR</strong>: <a href="http://downloads.sodaq.net/package_sodaq_index.json" rel="nofollow">http://downloads.sodaq.net/package_sodaq_index.json</a>
+<ul>
+<li>SODAQ Mbili</li>
+<li>SODAQ Tatu</li>
+</ul>
+</li>
+<li>
+<strong>SODAQ SAMD</strong>: <a href="http://downloads.sodaq.net/package_sodaq_samd_index.json" rel="nofollow">http://downloads.sodaq.net/package_sodaq_samd_index.json</a>
+<ul>
+<li>SODAQ Autonomo</li>
+<li>SODAQ ONE</li>
+<li>SODAQ ExpLoRer</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Sony</strong>: <a href="https://github.com/sonydevworld/spresense-arduino-compatible/releases/download/generic/package_spresense_index.json">https://github.com/sonydevworld/spresense-arduino-compatible/releases/download/generic/package_spresense_index.json</a></p>
+<ul>
+<li>Spresense</li>
+</ul>
+</li>
+<li>
+<p><strong>SparkFun</strong>: <a href="https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json" rel="nofollow">https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json</a></p>
+<ul>
+<li>AVR Boards (ATmega128RFA1 Development Board, Digital Sandbox, Fio v3, MaKey MaKey, Mega Pro (Mini) 3.3V, ProMicro 3.3V &amp; 5V, Serial 7-Segment Display)</li>
+</ul>
+</li>
+<li>
+<p><strong>STM32 core (official)</strong>: <a href="https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json">https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json</a></p>
+<ul>
+<li>Provide support of the following STM32 series:
+<ul>
+<li>STM32C0</li>
+<li>STM32F0, STM32F1, STM32F2, STM32F3, STM32F4, STM32F7</li>
+<li>STM32G0, STM32G4</li>
+<li>STM32H5, STM32H7</li>
+<li>STM32L0, STM32L1, STM32L4, STM32L5,</li>
+<li>STM32MP1 (Cortex-M)</li>
+<li>STM32U5</li>
+<li>STM32WB, STM32WBA, STM32WL</li>
+</ul>
+</li>
+<li>List of current supported boards <a href="https://github.com/stm32duino/Arduino_Core_STM32#supported-boards">here</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>[archived] STM8 core (official)</strong>: <a href="https://raw.githubusercontent.com/stm32duino/BoardManagerFiles/main/package_stmicroelectronics_index.json" rel="nofollow">https://raw.githubusercontent.com/stm32duino/BoardManagerFiles/main/package_stmicroelectronics_index.json</a></p>
+<ul>
+<li>Provide support of the following STM8 series:
+<ul>
+<li>STM8L</li>
+<li>STM8S</li>
+</ul>
+</li>
+<li>List of current supported boards <a href="https://github.com/stm32duino/Arduino_Core_STM8#boards-available">here</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>STM8</strong>: <a href="https://github.com/tenbaht/sduino/raw/master/package_sduino_stm8_index.json">https://github.com/tenbaht/sduino/raw/master/package_sduino_stm8_index.json</a></p>
+<ul>
+<li>An Arduino-like programming API that can be used from within the Arduino IDE or for Makefile-controlled builds.</li>
+<li>Using the SDCC and written in plain C instead of C++.</li>
+<li>STM8F103 breakout board</li>
+<li>ESP14 WiFi board</li>
+<li>STM8S105Discovery board</li>
+</ul>
+</li>
+<li>
+<p><strong>STM32F1xx/STM32F4xx/STM32F3xx Series</strong>: <a href="http://dan.drown.org/stm32duino/package_STM32duino_index.json" rel="nofollow">http://dan.drown.org/stm32duino/package_STM32duino_index.json</a></p>
+<ul>
+<li>STM32 Discovery F407</li>
+<li>STM32Stamp F405</li>
+<li>Netduino2 F405</li>
+<li>STM32F3Discovery</li>
+<li>Maple Mini</li>
+<li>Maple (Rev 3)</li>
+<li>Maple (RET 6)</li>
+<li>Microduino Core STM32 to FLASH</li>
+<li>STM Nucleo F103RB (STLink)</li>
+<li>Generic STM32F103C series</li>
+<li>Generic STM32F103R series</li>
+<li>Generic STM32F103T series</li>
+<li>Generic STM32F103V series</li>
+<li>Generic STM32F103Z series</li>
+<li>Generic GD32F103C series</li>
+</ul>
+</li>
+<li>
+<p><strong>Talk²</strong>: <a href="http://talk2arduino.wisen.com.au/master/package_talk2.wisen.com_index.json" rel="nofollow">http://talk2arduino.wisen.com.au/master/package_talk2.wisen.com_index.json</a></p>
+<ul>
+<li>
+<a href="https://talk2.wisen.com.au/product-talk2-whisper-node-avr/" rel="nofollow">Talk² Whisper Node</a>: Ultra-low power Arduino + RFM69 running on single AA battery</li>
+</ul>
+</li>
+<li>
+<p><strong>Texas Instruments MSP430, MSP432, TivaC</strong>: <a href="https://raw.githubusercontent.com/Andy4495/TI_Platform_Cores_For_Arduino/main/json/package_energia_optimized_index.json" rel="nofollow">https://raw.githubusercontent.com/Andy4495/TI_Platform_Cores_For_Arduino/main/json/package_energia_optimized_index.json</a></p>
+<ul>
+<li>GitHub repo with more info: <a href="https://github.com/Andy4495/TI_Platform_Cores_For_Arduino">https://github.com/Andy4495/TI_Platform_Cores_For_Arduino</a>
+</li>
+<li>See also: <a href="https://github.com/ndroid/msp432-core/">https://github.com/ndroid/msp432-core/</a>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>TKJ Electronics</strong>: <a href="https://raw.githubusercontent.com/TKJElectronics/Balanduino/master/package_tkj_balanduino_index.json" rel="nofollow">https://raw.githubusercontent.com/TKJElectronics/Balanduino/master/package_tkj_balanduino_index.json</a></p>
+<ul>
+<li>Balanduino</li>
+</ul>
+</li>
+<li>
+<p><strong>TL7788 Kit</strong>: <a href="https://rawgit.com/hunianhang/nufront_arduino_json/master/package_tl7788_index.json" rel="nofollow">https://rawgit.com/hunianhang/nufront_arduino_json/master/package_tl7788_index.json</a></p>
+<ul>
+<li>TL7788 Kit v1.0.3</li>
+</ul>
+</li>
+<li>
+<p><strong>UDOO</strong>: <a href="https://udooboard.github.io/arduino-board-package/package_udoo_index.json" rel="nofollow">https://udooboard.github.io/arduino-board-package/package_udoo_index.json</a></p>
+<ul>
+<li>UDOO Quad/Dual</li>
+<li>UDOO Neo</li>
+</ul>
+</li>
+<li>
+<p><strong>Windows 10 IoT Core</strong>: <a href="https://github.com/ms-iot/iot-utilities/raw/master/IotCoreAppDeployment/ArduinoIde/package_iotcore_ide-1.6.6_index.json">https://github.com/ms-iot/iot-utilities/raw/master/IotCoreAppDeployment/ArduinoIde/package_iotcore_ide-1.6.6_index.json</a></p>
+<ul>
+<li>
+<a href="http://www.windowsondevices.com/" rel="nofollow">Windows 10 IoT Core</a>
+<ul>
+<li>Raspberry Pi 2 &amp; 3</li>
+<li>Minnowboard MAX</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>wirino</strong>: <a href="https://per1234.github.io/wirino/package_per1234_wirino_index.json" rel="nofollow">https://per1234.github.io/wirino/package_per1234_wirino_index.json</a></p>
+<ul>
+<li>GitHub repository: <a href="https://github.com/per1234/wirino">https://github.com/per1234/wirino</a>
+</li>
+<li>Boards:
+<ul>
+<li>Wiring S</li>
+<li>Wiring S with Play Shield</li>
+<li>Wiring V1.0</li>
+<li>Wiring Mini V1.0</li>
+<li>Wiring V1.1 ATmega1281</li>
+<li>Wiring V1.1 ATmega2561</li>
+</ul>
+</li>
+<li>Dependencies:
+<ul>
+<li>MightyCore: <a href="https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json" rel="nofollow">https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json</a>
+</li>
+<li>MegaCore: <a href="https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json" rel="nofollow">https://mcudude.github.io/MegaCore/package_MCUdude_MegaCore_index.json</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>XMegaForArduino project</strong>: <a href="https://github.com/XMegaForArduino/IDE/raw/master/package_XMegaForArduino_index.json">https://github.com/XMegaForArduino/IDE/raw/master/package_XMegaForArduino_index.json</a></p>
+<ul>
+<li>Github project:  <a href="http://github.com/XMegaForArduino">http://github.com/XMegaForArduino</a>
+</li>
+<li>Support for several XMEGA processors (some may require compiler patches), more to come</li>
+<li>Basic 'pins_arduino.h' files for 'standard' layouts, described in the file</li>
+<li>Intended to be the basis for your own custom XMEGA-based board</li>
+<li>Supports dedicated pins for hardware serial flow control</li>
+<li>Implements a low-current 'wait' state for delay and wait for interrupt</li>
+<li>bootloaders for 'arduino' and 'wiring' protocol.</li>
+<li>USB support 'under development' (for ATxmega128A1U, others)</li>
+<li>Provides new libraries for SPI, SD, 2-wire so you can start using these right away</li>
+<li>Includes patch files for compilers and tools (source patch), and instructions on how to modify earlier IDE versions</li>
+<li>Leverages XMEGA's internal 32 MHz clock in the startup code (no external crystal or resonator required)</li>
+<li>Advanced interrupt handling support (basically ANY pin can be an interrupt).</li>
+<li>Advanced pin settings include pull up, pull down, on both input and output</li>
+<li>Project is still in a 'beta' state, but is fully functional for nearly all practical uses, and as 'Arduino compatible' as could be made possible.</li>
+</ul>
+</li>
+<li>
+<p><strong>HelTec cubecell</strong>: <a href="https://resource.heltec.cn/download/package_CubeCell_index.json" rel="nofollow">https://resource.heltec.cn/download/package_CubeCell_index.json</a></p>
+<ul>
+<li>Github project:  <a href="https://github.com/HelTecAutomation/CubeCell-Arduino">https://github.com/HelTecAutomation/CubeCell-Arduino</a>
+</li>
+<li>Based on an ultra low power design, attains 3.5uA in deep sleep mode, even with the RTC clock running;</li>
+<li>LoRa signal output put power range 0~22(±1) dBm;</li>
+<li>Low-cost despite its current state of the art technology;</li>
+<li>Integrated encryption algorithm protects your investment by rendering cloned firmware inoperative;</li>
+<li>Based on proven technology - the new ASR650x, is a combination of the PSoC4000 and SX1262 into a single chip, reducing the overall size to something smaller than the competition;</li>
+<li>Solar panel support;</li>
+<li>LoRaWAN protocol support;</li>
+<li>AT command support;</li>
+<li>In the LoRaWAN relevant examples, have a reasonable timeline planning.</li>
+</ul>
+</li>
+<li>
+<p><strong>HelTec Wifi Kit 32</strong>: <a href="https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/download/0.0.5/package_heltec_esp32_index.json">https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/download/0.0.5/package_heltec_esp32_index.json</a></p>
+</li>
+<li>
+<p><strong>Z-Wave.Me Z-Uno</strong>:</p>
+<ul>
+<li>Arduino-like board with the full support of Z-Wave protocol including Z-Wave Plus and Z-Wave Long Range</li>
+<li>Supports always-on, sleeping, and frequently sleeping (FLiRS) modes</li>
+<li>
+<a href="https://z-uno.z-wave.me/technical/" rel="nofollow">Z-Uno project</a> page</li>
+<li>
+<strong>Z-Uno 2 (7th gen Z-Wave boards)</strong>: <a href="https://z-uno.z-wave.me/files/z-uno2/package_z-wave2.me_index.json" rel="nofollow">https://z-uno.z-wave.me/files/z-uno2/package_z-wave2.me_index.json</a>
+<ul>
+<li>
+<a href="https://github.com/Z-Wave-Me/Z-Uno-G2-Core">GitHub project</a> repository</li>
+<li><a href="https://z-uno.z-wave.me/examples/?zunoVersion=v2" rel="nofollow">Projects and examples</a></li>
+</ul>
+</li>
+<li>
+<strong>Z-Uno 1 (5th gen Z-Wave boards)</strong>: <a href="https://z-uno.z-wave.me/files/z-uno/package_z-wave.me_index.json" rel="nofollow">https://z-uno.z-wave.me/files/z-uno/package_z-wave.me_index.json</a>
+<ul>
+<li>
+<a href="https://github.com/Z-Wave-Me/Z-Uno-Core">GitHub project</a> repository</li>
+<li><a href="https://z-uno.z-wave.me/examples/?zunoVersion=v1" rel="nofollow">Projects and examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>W80x_arduino</strong>: <a href="https://github.com/board707/w80x_arduino/blob/hal-v0.6.0/package_w80x_index.json">https://github.com/board707/w80x_arduino/blob/hal-v0.6.0/package_w80x_index.json</a></p>
+<ul>
+<li>Arduino package for WinnerMicro boards, based on XT-E804 MCU.</li>
+<li>GitHub repository: <a href="https://github.com/board707/w80x_arduino">https://github.com/board707/w80x_arduino</a>
+</li>
+<li>Boards:
+<ul>
+<li>W801</li>
+<li>W806</li>
+<li>Air103</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+
+              <p id="wiki-footer">
+                <a href="https://github.com/arduino/Arduino/wiki/_new?wiki%5Bname%5D=_Footer">
+                   Add a custom footer
+</a>              </p>
+          </div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  15px;
+      font-family: Helvetica, Arial, sans-serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 22.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
