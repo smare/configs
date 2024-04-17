@@ -160,6 +160,19 @@ Set-Alias -Name which -Value Get-Which
 
 #------------------------------------------------------------------------------
 
+# Passes arguments to the where.exe command
+function Get-Whence {
+    param (
+        [Parameter(Mandatory)]
+        [string]$Name
+    )
+
+    & C:\dev\tools\gnu\bin\which.exe $Name
+}
+
+Set-Alias -Name whence -Value Get-Whence
+
+#------------------------------------------------------------------------------
 # Runs Notepad++ and opens the specified file
 function Invoke-NotepadPlusPlus {
     & 'C:\Program Files\Notepad++\notepad++.exe' $args
@@ -171,13 +184,13 @@ Set-Alias -Name npp Invoke-NotepadPlusPlus
 
 #------------------------------------------------------------------------------
 # Searches  $env:path for any file (incl. .lnk)
-function Find-Whence {
+function Get-Wear {
     @(where.exe $args 2>$null)[0]
 }
 
-# ALIAS: whence
-# FUNCTION: Find-Whence
-Set-Alias -Name whence Find-Whence
+# ALIAS: wear
+# FUNCTION: Get-Wear
+Set-Alias -Name wear Get-Wear
 
 #------------------------------------------------------------------------------
 
@@ -242,6 +255,34 @@ Set-Alias -Name dos2unix Invoke-dos2unix
 
 #------------------------------------------------------------------------------
 
+# Runs 'New-Item -PathType Container' for the given path, creating any necessary parent directories,
+# with verbose output.
+function New-DirectoryIfNotExists {
+    $folderPathIsValid = Test-Path -Path $args -IsValid
+    if ($folderPathIsValid) {
+        $folderIsAFile = Test-Path -Path $args -PathType Leaf
+        if($folderIsAFile) {
+            Write-Host "$args is a file, aborting."
+            break
+        } else {
+            $folderExists = Test-Path -Path $args -PathType Container
+            if ($folderExists) {
+                Write-Host "Directory $args already exists, aborting."
+            } else {
+                New-Item -ItemType Directory -Force -Path $args -ErrorAction Stop
+            }
+        }
+    } else {
+        Write-Host "Path $args is not valid."
+    }
+
+}
+
+# ALIAS: nd
+# FUNCTION: Creates a new directory
+Set-Alias -Name nd New-DirectoryIfNotExists
+
+#------------------------------------------------------------------------------
 # Pushes to Git
 function Invoke-GitPush {
     & git push $args
