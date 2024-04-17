@@ -1,6 +1,7 @@
 .vscode/
 .DS_Store
 *.log
+*.bkp
 # C extensions
 *.so
 # Installer logs
