@@ -231,6 +231,17 @@ Set-Alias -Name dld Set-DownloadsDirectory
 
 #------------------------------------------------------------------------------
 
+# Invokes dos2unix
+function Invoke-dos2unix {
+    & C:\dev\tools\dos2unix-7.5.2\bin\dos2unix.exe $args
+}
+
+# ALIAS: dos2unix
+# FUNCTION: Converts line endings in a file from Windows-like to Unix-like
+Set-Alias -Name dos2unix Invoke-dos2unix
+
+#------------------------------------------------------------------------------
+
 # Pushes to Git
 function Invoke-GitPush {
     & git push $args
