@@ -62,3 +62,8 @@ New-Item -ItemType Hardlink -Path "$ENV:ProgramFiles\PowerShell\7\Microsoft.Powe
 
 New-Item -ItemType Hardlink -Path "$HOME\OneDrive\Documents\PowerShell\Microsoft.VSCode_profile.ps1" -Target C:\dev\projects\configs\powershell\Microsoft.VSCode_profile.ps1
 ```
+
+### bottom (btm)
+```powershell
+New-Item -ItemType Hardlink -Path "$ENV:APPDATA\bottom\bottom.toml" -Target C:\dev\projects\configs\bottom\bottom.toml
+```

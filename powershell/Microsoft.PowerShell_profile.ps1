@@ -2,6 +2,7 @@
 #34de4b3d-13a8-4540-b76d-b9e8d3851756 PowerToys CommandNotFound module
 
 Import-Module "C:\Program Files\PowerToys\WinUI3Apps\..\WinGetCommandNotFound.psd1"
+
 # Importing large modules in the profile incurs a significant startup cost, so
 # only do so for frequently used modules.
 # Import-Module AWSPowerShell.NetCore
@@ -23,12 +24,20 @@ Set-PSReadLineOption -BellStyle None # Remove the annoying bell sound  # not sur
 # ripgrep autocompletion
 . "C:\dev\tools\ripgrep-14.1.0\complete\_rg.ps1"
 
+# bottom autocompletion
+. $ENV:APPDATA\bottom\_btm.ps1
+
 # Set UTF-8 encoding
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # *****************************************************************************
 # ALIASES
 
+#------------------------------------------------------------------------------
+
+Set-Alias -Name curl -Value C:\dev\tools\curl-8.6.0_2\bin\curl.exe
+Set-Alias -Name du -Value C:\dev\tools\dust-v1.0.0\dust.exe
+Set-Alias -Name vi -Value vim
 #------------------------------------------------------------------------------
 
 # Source this profile
